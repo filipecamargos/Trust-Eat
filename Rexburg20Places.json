@@ -1,0 +1,202 @@
+[
+    {
+        "id": "ChIJbzy7828LVFMRj2z7copQ6Lw",
+        "name": "Applebee's Grill + Bar",
+        "address": "975 University Blvd, Rexburg",
+        "phone": "(208) 359-9922",
+        "type": ["American", "Chicken", "Pasta", "burgers", "Riblets"],
+        "rating": 0,
+        "image": "",
+        "website": "https://restaurants.applebees.com/en-us/id/rexburg/975-university-blvd-84021"
+    },
+    {
+        "id": "ChIJsUZ1spYLVFMRrmSe5dg0824",
+        "name": "Pick Me Up Drinks",
+        "address": "76 W 2nd S, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJXfogDVMKVFMR6tEYarg2Z_E",
+        "name": "Guerrero's Mexican Food",
+        "address": "27 W Main St, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJEdQji6wLVFMRmqVC-87ZxgE",
+        "name": "SodaVine",
+        "address": "50 S 2nd W, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJ_3wMkHDeJIgRQvF6Cl2sxOI",
+        "name": "Taco Time",
+        "address": "274 S 2nd W, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJ2RKzbgwLVFMRranGpNNov0k",
+        "name": "Da Pineapple Grill",
+        "address": "383 S 2nd W, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJZxMwSgcLVFMRVUwdwXY-fjI",
+        "name": "Casa De Ochoa",
+        "address": "383 S 2nd W ste b, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJjVSVPo4LVFMRVmZc185G_UM",
+        "name": "Righteous Slice",
+        "address": "175 W. 200 S#100, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJieDBKVIKVFMRlMnHByA6dac",
+        "name": "Millhollow Restaurant",
+        "address": "48 S 1st E, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJAxTojSsLVFMRwS7WUideG7s",
+        "name": "Wendy's",
+        "address": "1117 S Yellowstone Hwy, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJwwneWwcLVFMRzzUVxTr5Fmo",
+        "name": "New Fong's",
+        "address": "352 S 2nd W, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJb9xyyKwLVFMRv3Nb-tksuzk",
+        "name": "Kebab Hut - Rexburg",
+        "address": "248 S 2nd W, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJXYsXP6gLVFMRG-8JmnMpeVc",
+        "name": "Five Guys",
+        "address": "179 W 2nd S, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJ2znxhXgLVFMRV-ZbGgf4de8",
+        "name": "Kainoa's Hawaiian Grill",
+        "address": "115 S 2nd W, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJz0Nfgd8LVFMRoP5U9tTlBjM",
+        "name": "K-Lani’s",
+        "address": "12 W 1st S, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJk7NKYQsLVFMRbku_6BjA-zM",
+        "name": "Red Rabbit Grill",
+        "address": "155 W Main St #8, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJ33snPd4LVFMRoYG3SJHHrr4",
+        "name": "The Pit Barbecue & Catering",
+        "address": "32 College Ave, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJKd4BXW8LVFMRz3U2Q0qjn4o",
+        "name": "Fresco Kitchen And Grill",
+        "address": "1181 S Yellowstone Hwy, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJ2Zi8rqsLVFMRkxDpmSLYjR4",
+        "name": "Gator Jack's of Rexburg",
+        "address": "160 W 2nd S, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    },
+    {
+        "id": "ChIJ82ZLelQKVFMRG92Lcnqget8",
+        "name": "Soup For You? LLC",
+        "address": "52 College Ave, Rexburg",
+        "phone": "",
+        "type": [],
+        "rating": 0,
+        "image": "",
+        "website": ""
+    }
+]
