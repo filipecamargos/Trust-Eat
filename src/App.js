@@ -1,7 +1,9 @@
+import MainNavBar from "./NavBar/MainNavBar";
+
 function App() {
   return (
     <div className="App">
-      <p>Empty for now</p>
+      <MainNavBar />
     </div>
   );
 }
