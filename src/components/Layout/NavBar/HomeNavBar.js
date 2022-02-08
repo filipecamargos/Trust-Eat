@@ -15,17 +15,18 @@ const MainNavBar = () => {
   return (
     <Navbar expand="sm" bg="dark" variant="dark">
       <Container fluid>
-        <Navbar.Brand href="#home">
-          <img
-            alt=""
-            src={logo}
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          />{" "}
-          <span className={classes.hidden}>Cool App Name</span>
-        </Navbar.Brand>
-
+        <LinkContainer to="/">
+          <Navbar.Brand>
+            <img
+              alt=""
+              src={logo}
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />{" "}
+            <span>Cool App Name</span>
+          </Navbar.Brand>
+        </LinkContainer>
         <Form className="d-flex">
           <Form.Select size="sm" style={{ width: 80, height: 38 }}>
             <option>All</option>
