@@ -24,7 +24,7 @@ const MainNavBar = () => {
               height="30"
               className="d-inline-block align-top"
             />{" "}
-            <span>Cool App Name</span>
+            <span className={classes.hidden}>Cool App Name</span>
           </Navbar.Brand>
         </LinkContainer>
         <Form className="d-flex">
@@ -43,6 +43,7 @@ const MainNavBar = () => {
             <DropdownButton
               id="dropdown-basic-button"
               className={classes["filter-button"]}
+              align="end"
               title={
                 <i className="fas fa-sliders-h" style={{ fontSize: 20 }}></i>
               }
