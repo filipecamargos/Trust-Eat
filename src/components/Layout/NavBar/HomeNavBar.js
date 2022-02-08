@@ -8,8 +8,8 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import classes from "./MainNavBar.module.css";
-import logo from "../../images/logo192.png";
+import classes from "./HomeNavBar.module.css";
+import logo from "../../../images/logo192.png";
 
 const MainNavBar = () => {
   return (

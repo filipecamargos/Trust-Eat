@@ -1,43 +1,24 @@
-import MainNavBar from "./components/NavBar/MainNavBar";
 import Home from "./components/Home/Home";
 import Restaurant from "./components/Restaurant/Restaurant";
 import AddRestaurant from "./components/Add Restaurant/AddRestaurant";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-const RouteWithNavbar = ({ exact, path, component: Component, ...rest }) => {
-  return (
-    <Route
-      exact={exact}
-      path={path}
-      {...rest}
-      render={(routeProps) => {
-        return (
-          <>
-            <MainNavBar {...routeProps} />
-            <Component {...routeProps} />
-          </>
-        );
-      }}
-    />
-  );
-};
+import Layout from "./components/Layout/Layout";
+import Layout2 from "./components/Layout/Layout2";
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <MainNavBar />
-        <div className="content">
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route
-              path="/restaurant/:restaurant_name"
-              element={<Restaurant />}
-            />
-            <Route path="/addrestaurant" element={<AddRestaurant />} />
-          </Routes>
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+        </Route>
+      </Routes>
+      <Routes>
+        <Route element={<Layout2 />}>
+          <Route path="/restaurant/:restaurant_name" element={<Restaurant />} />
+          <Route path="/addrestaurant" element={<AddRestaurant />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }
