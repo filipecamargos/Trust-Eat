@@ -1,6 +1,15 @@
-import { Navbar, Nav, Container, Form, FormControl } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Container,
+  Form,
+  FormControl,
+  DropdownButton,
+  Dropdown,
+} from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import classes from "./MainNavBar.module.css";
-import logo from "../images/logo192.png";
+import logo from "../../images/logo192.png";
 
 const MainNavBar = () => {
   return (
@@ -30,9 +39,17 @@ const MainNavBar = () => {
               className="me-2"
               aria-label="Search"
             />
-            <button className={classes["filter-button"]}>
-              <i className="fas fa-sliders-h" style={{ fontSize: 24 }}></i>
-            </button>
+            <DropdownButton
+              id="dropdown-basic-button"
+              className={classes["filter-button"]}
+              title={
+                <i className="fas fa-sliders-h" style={{ fontSize: 20 }}></i>
+              }
+            >
+              <Dropdown.Item as="button">Action</Dropdown.Item>
+              <Dropdown.Item as="button">Another action</Dropdown.Item>
+              <Dropdown.Item as="button">Something else</Dropdown.Item>
+            </DropdownButton>
           </div>
         </Form>
         <Navbar.Toggle
@@ -42,11 +59,12 @@ const MainNavBar = () => {
           <i className="fa fa-angle-down" style={{ fontSize: 24 }}></i>
         </Navbar.Toggle>
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav.Link href="#action2" className={classes.hidden}>
-            Home
-          </Nav.Link>
-
-          <Nav.Link href="#action2">Add Restaurant</Nav.Link>
+          <LinkContainer to="/">
+            <Nav.Link className={classes.hidden}>Home</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/addrestaurant">
+            <Nav.Link>Add Restaurant</Nav.Link>
+          </LinkContainer>
         </Navbar.Collapse>
       </Container>
     </Navbar>
