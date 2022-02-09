@@ -1,0 +1,31 @@
+.button-inside {
+  position: relative;
+}
+
+.filter-button {
+  position: absolute !important;
+  right: 1px;
+  top: 3px;
+  border: none;
+  width: 34px;
+  padding: 2px;
+  background-color: transparent;
+}
+
+.filter-button > button {
+  padding: 2px 1px;
+}
+
+.filter-button > button::after {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+@media only screen and (min-width: 576px) {
+  .hidden {
+    display: inline-block;
+  }
+}
