@@ -10,6 +10,11 @@
     background-color: azure;
 }
 
+.ratings>.fa {
+    color:aqua;
+}
+
 .restaurant_card_single_description {
     background-color: beige;
 }
+

@@ -4,7 +4,7 @@ import styles from "./RestaurantCard.module.css"
 const DUMMY_DATA = {
     name: "Restaurante Name",
     priceTag: '$$',
-    review: 2,
+    review: 3.5,
     numberOfReviews: 100,
     address: "123 Random St. Rexburg, ID 83440",
     site: "www.restaurant.whatever",
@@ -14,6 +14,18 @@ const DUMMY_DATA = {
 }
 
 const RestaurantCard = (props) => {
+    //Set the stars review
+    let review = [];
+    let reviewReduce = DUMMY_DATA.review;
+    while (reviewReduce >= 1) {
+        review.push(<i class="fa-solid fa-star"></i>)
+        reviewReduce--;
+    }
+    //Check for half stars
+    if (reviewReduce % 1 !== 0) {
+        review.push(<i class="fa-solid fa-star-half-stroke"></i>)
+    }
+
     return (
         <div className={styles.restaurant_card} key={DUMMY_DATA.id}>
             <div className={styles.restaurant_card_top_title}>
@@ -21,8 +33,11 @@ const RestaurantCard = (props) => {
                 <span>{DUMMY_DATA.priceTag}</span>
             </div>
             <div className={styles.restaurant_review_line}>
-                <span>{DUMMY_DATA.review} </span>
-                <span>{DUMMY_DATA.numberOfReviews} reviews</span>
+                <div className="d-flex justify-content-between align-items-center">
+                    <div className="ratings"> {review} 
+                    <span> {DUMMY_DATA.numberOfReviews} reviews</span>
+                    </div>
+                </div>
             </div>
             <p className={styles.restaurant_card_single_description}>{DUMMY_DATA.address}</p>
             <p className={styles.restaurant_card_single_description}>{DUMMY_DATA.site}</p>
