@@ -1,5 +1,7 @@
+import RestaurantCard from "../Cards/RestaurantCard";
+
 const Home = () => {
-  return <div>Home</div>;
+  return <div><RestaurantCard /></div>;
 };
 
 export default Home;
