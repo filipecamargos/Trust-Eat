@@ -1,4 +1,5 @@
 import React from "react";
+import NewRestaurantForm from "./NewRestaurantForm";
 
 const AddRestaurant = () => {
 	return (
@@ -6,9 +7,7 @@ const AddRestaurant = () => {
 			<div>
 				<div>Add Restaurant</div>
 			</div>
-			<div>
-				<form></form>
-			</div>
+      <NewRestaurantForm></NewRestaurantForm>
 		</div>
 	);
 };
