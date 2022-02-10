@@ -1,6 +1,6 @@
 import Home from "./components/Home/Home";
 import Restaurant from "./components/Restaurant/Restaurant";
-import AddRestaurant from "./components/Add Restaurant/AddRestaurant";
+import AddRestaurant from "./components/AddRestaurant/AddRestaurant";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Layout2 from "./components/Layout/Layout2";
