@@ -15,17 +15,6 @@ const DUMMY_DATA = {
 };
 
 const RestaurantCard = (props) => {
-  //Set the stars review
-  let review = [];
-  let reviewReduce = DUMMY_DATA.review;
-  while (reviewReduce >= 1) {
-    review.push(<i class="fa-solid fa-star"></i>);
-    reviewReduce--;
-  }
-  if (reviewReduce % 1 !== 0) {
-    review.push(<i class="fa-solid fa-star-half-stroke"></i>);
-  }
-
   return (
     <div className={styles.restaurant_card} key={DUMMY_DATA.id}>
       <div className={styles.restaurant_card_top_title}>
