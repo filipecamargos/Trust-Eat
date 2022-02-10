@@ -15,8 +15,8 @@ function App() {
       </Routes>
       <Routes>
         <Route element={<Layout2 />}>
-          <Route path="/restaurant/:restaurant_name" element={<Restaurant />} />
-          <Route path="/addrestaurant" element={<AddRestaurant />} />
+          <Route path="restaurant/:restaurant_name" element={<Restaurant />} />
+          <Route path="addrestaurant" element={<AddRestaurant />} />
         </Route>
       </Routes>
     </Router>

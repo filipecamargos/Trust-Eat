@@ -10,8 +10,31 @@ import {
 import { LinkContainer } from "react-router-bootstrap";
 import classes from "./HomeNavBar.module.css";
 import logo from "../../../images/logo192.png";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const MainNavBar = () => {
+  const navigate = useNavigate();
+  const [searchText, setSearchText] = useState("");
+  const [city, setCity] = useState("all");
+
+  const handleSearchInput = (e) => {
+    setSearchText(e.target.value);
+    navigate("/", { state: { search: e.target.value } });
+  };
+
+  const handleCityChange = (e) => {
+    setCity(e.target.value);
+    setSearchText("");
+
+    navigate("/", { state: { city: e.target.value } });
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    navigate("/", { state: { search: searchText } });
+  };
+
   return (
     <Navbar expand="sm" bg="dark" variant="dark">
       <Container fluid>
@@ -27,11 +50,16 @@ const MainNavBar = () => {
             <span className={classes.hidden}>Cool App Name</span>
           </Navbar.Brand>
         </LinkContainer>
-        <Form className="d-flex">
-          <Form.Select size="sm" style={{ width: 80, height: 38 }}>
-            <option>All</option>
-            <option>Rexburg</option>
-            <option>Idaho Falls</option>
+        <Form className="d-flex" onSubmit={handleSearchSubmit}>
+          <Form.Select
+            value={city}
+            size="sm"
+            onChange={handleCityChange}
+            style={{ width: 80, height: 38 }}
+          >
+            <option value="all">All</option>
+            <option value="rex">Rexburg</option>
+            <option value="if">Idaho Falls</option>
           </Form.Select>
           <div className={classes["button-inside"]}>
             <FormControl
@@ -39,6 +67,7 @@ const MainNavBar = () => {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              onChange={handleSearchInput}
             />
             <DropdownButton
               id="dropdown-basic-button"
