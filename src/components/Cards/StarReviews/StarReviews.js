@@ -29,9 +29,10 @@ const StarReviews = (props) => {
             <span> First to review!</span>
         </div>
     );
+    
     if (props.review > 0) {
         componentReview  = (
-            <div className="ratings">{starReview} 
+            <div className={styles.ratings}>{starReview} 
                 <span> {props.numberOfReviews} reviews</span>
             </div>
         )
