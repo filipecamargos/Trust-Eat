@@ -1,19 +1,48 @@
 import React from "react";
+// useFormInput is a customized hook to handle form error validation
+import useFormInput from "../../hooks/useFormInput";
 
 const NewRestaurantForm = () => {
+	// pass name rule to the hook to handle form validation
+	const {
+		value: enteredNameValue,
+		isValid: enteredNameIsValid,
+		hasError: nameInputHasError,
+		valueChangeHandler: nameChangedHandler,
+		inputBlurHandler: nameBlurHandler,
+		reset: resetNameInput,
+	} = useFormInput((value) => value.trim() !== "");
+
+	let formIsValid = false;
+
+	if (enteredNameIsValid) {
+		formIsValid = true;
+	}
+
 	const submitHandler = (event) => {
 		event.preventDefault();
+
+		// if any field is missing or doesn't meet the requirement, we don't keep going to process the data
+		if (!formIsValid) {
+			return;
+		}
+
+        resetNameInput();
 	};
+
+	const nameClasses = nameInputHasError
+		? "form-control invalid"
+		: "form-control";
 
 	return (
 		<form onSubmit={submitHandler}>
-			<div className="">
-				<label htmlFor="name">Restaurant Name</label>
+			<div className={nameClasses}>
+				<label htmlFor="name">Name</label>
 				<br />
-				<input type="text" id="name" value="" onChange="" onBlur="" />
-				{/* {restaurantNameHasError && (
-						<p className="error-text">Please enter a restaurant name.</p>
-					)} */}
+				<input type="text" id="name" value={enteredNameValue} onChange={nameChangedHandler} onBlur={nameBlurHandler} />
+				{nameInputHasError && (
+					<p className="error-text">Please enter a restaurant name.</p>
+				)}
 			</div>
 			<div className="">
 				<label htmlFor="address">Address</label>
