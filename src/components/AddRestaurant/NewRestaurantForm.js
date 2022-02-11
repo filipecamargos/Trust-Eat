@@ -25,6 +25,16 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 		reset: resetAddressInput,
 	} = useFormInput((value) => value.trim() !== "");
 
+	// handle city field
+	const {
+		value: enteredCityValue,
+		isValid: enteredCityIsValid,
+		hasError: cityInputHasError,
+		valueChangeHandler: cityChangedHandler,
+		inputBlurHandler: cityBlurHandler,
+		reset: resetCityInput,
+	} = useFormInput(() => {});
+
 	// handle phone number field
 	const {
 		value: enteredPhoneValue,
@@ -105,7 +115,7 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 		const finalTypeData = typeArrayData.map((type) => {
 			return type.trim();
 		});
-        
+
 		const newRestaurantData = {
 			name: enteredNameValue,
 			address: enteredAddressValue,
@@ -134,6 +144,10 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 		: "form-control";
 
 	const adressClasses = addressInputHasError
+		? "form-control invalid"
+		: "form-control";
+
+	const cityClasses = addressInputHasError
 		? "form-control invalid"
 		: "form-control";
 
@@ -176,6 +190,24 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 						Please enter an address for this restaurant.
 					</p>
 				)}
+			</div>
+			<div className={cityClasses}>
+				<label htmlFor="city">City*</label>
+				<br />
+				<select
+					id="city"
+					value={enteredCityValue}
+					onChange={cityChangedHandler}
+					onBlur={cityBlurHandler}
+				>
+					<option>Rexburg</option>
+					<option>Idaho Falls</option>
+				</select>
+				{/* {cityInputHasError && (
+					<p className="error-text">
+						Please select a city for this restaurant.
+					</p>
+				)} */}
 			</div>
 			<div className={phoneClasses}>
 				<label htmlFor="phone">Phone Number*</label>
