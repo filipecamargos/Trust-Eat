@@ -33,7 +33,7 @@ const RestaurantCard = (props) => {
   }
 
   return (
-    <div className={styles.restaurant_card} key={DUMMY_DATA.id}>
+    <div className={styles.restaurant_card}>
       <div className={styles.restaurant_card_top_title}>
         <h3>{DUMMY_DATA.name}</h3>
         <h3>{DUMMY_DATA.priceTag}</h3>
