@@ -4,7 +4,7 @@ import useFormInput from "../../hooks/useFormInput";
 // add CSS style
 import "./NewRestaurantForm.css";
 
-const NewRestaurantForm = () => {
+const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 	// handle name field
 	const {
 		value: enteredNameValue,
@@ -97,6 +97,18 @@ const NewRestaurantForm = () => {
 		if (!formIsValid) {
 			return;
 		}
+
+        const newRestaurantData = {
+			name: enteredNameValue,
+			address: enteredAddressValue,
+			phone: enteredPhoneValue,
+			type: enteredTypeValue,
+			price_range: enteredPriceValue,
+			website: enteredWebsiteValue,
+			url: enteredImageUrlValue,
+		}
+
+        onGetNewRestaurantData(newRestaurantData);
 
 		// after we process all the data from submission, clean up all the input fields
 		resetNameInput();
