@@ -11,16 +11,16 @@ const StarReviews = (props) => {
     let reviewReduce = props.review;
 
     while (reviewReduce >= 1) {
-        starReview.push(<i className="fa-solid fa-star" key={reviewReduce}></i>)
+        starReview.push(<i className={"fa-solid fa-star " + styles.star} key={reviewReduce}></i>)
         reviewReduce--;
     }
 
     if (reviewReduce % 1 !== 0) {
-        starReview.push(<i className="fa-solid fa-star-half-stroke" key={reviewReduce}></i>)
+        starReview.push(<i className={"fa-solid fa-star-half-stroke " + styles.star} key={reviewReduce}></i>)
     }
 
     while (starReview.length < 5) {
-        starReview.push(<i className="fa fa-star-o" key={starReview.length + 5}></i>) 
+        starReview.push(<i className={"fa fa-star-o " + styles.star} key={starReview.length + 5}></i>) 
     }
 
     return <>{starReview}</>;
