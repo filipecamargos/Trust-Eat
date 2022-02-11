@@ -113,6 +113,18 @@ const NewRestaurantForm = () => {
 		? "form-control invalid"
 		: "form-control";
 
+	const adressClasses = addressInputHasError
+		? "form-control invalid"
+		: "form-control";
+
+	const phoneClasses = phoneInputHasError
+		? "form-control invalid"
+		: "form-control";
+
+	const typeClasses = typeInputHasError
+		? "form-control invalid"
+		: "form-control";
+
 	return (
 		<form onSubmit={submitHandler} className="form">
 			<div className={nameClasses}>
@@ -129,7 +141,7 @@ const NewRestaurantForm = () => {
 					<p className="error-text">Please enter a restaurant name.</p>
 				)}
 			</div>
-			<div className="">
+			<div className={adressClasses}>
 				<label htmlFor="address">Address*</label>
 				<br />
 				<input
@@ -145,7 +157,7 @@ const NewRestaurantForm = () => {
 					</p>
 				)}
 			</div>
-			<div className="">
+			<div className={phoneClasses}>
 				<label htmlFor="phone">Phone Number*</label>
 				<br />
 				<input
@@ -159,7 +171,7 @@ const NewRestaurantForm = () => {
 					<p className="error-text">Please enter a valid phone number.</p>
 				)}
 			</div>
-			<div className="">
+			<div className={typeClasses}>
 				<label htmlFor="type">Types of Food (separated by commas)*</label>
 				<br />
 				<input
@@ -223,7 +235,9 @@ const NewRestaurantForm = () => {
 				)} */}
 			</div>
 			<div className="form-actions">
-				<button className="submit-button" disabled={!formIsValid}>Add New Restaurant</button>
+				<button className="submit-button" disabled={!formIsValid}>
+					Add New Restaurant
+				</button>
 			</div>
 		</form>
 	);
