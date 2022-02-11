@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Roboto:wght@100&family=Source+Sans+Pro:wght@200&family=Zen+Antique&display=swap');
 
+.link_style {
+    text-decoration: none;
+    color: #000;    
+    outline: none;
+}
+
 .restaurant_card {
     width: 340px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
