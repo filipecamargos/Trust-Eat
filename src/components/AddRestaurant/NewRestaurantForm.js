@@ -1,6 +1,8 @@
 import React from "react";
 // useFormInput is a customized hook to handle input's value and error
 import useFormInput from "../../hooks/useFormInput";
+// add CSS style
+import "./NewRestaurantForm.css";
 
 const NewRestaurantForm = () => {
 	// handle name field
@@ -112,7 +114,7 @@ const NewRestaurantForm = () => {
 		: "form-control";
 
 	return (
-		<form onSubmit={submitHandler}>
+		<form onSubmit={submitHandler} className="form">
 			<div className={nameClasses}>
 				<label htmlFor="name">Restaurant Name*</label>
 				<br />
@@ -221,7 +223,7 @@ const NewRestaurantForm = () => {
 				)} */}
 			</div>
 			<div className="form-actions">
-				<button disabled={!formIsValid}>Add New Restaurant</button>
+				<button className="submit-button" disabled={!formIsValid}>Add New Restaurant</button>
 			</div>
 		</form>
 	);
