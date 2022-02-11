@@ -1,10 +1,18 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import rexburgData from "../../json data/Rexburg20Places.json";
+import allData from "../../json data/all.json";
+
+const filterData = (data, substring, property) => {
+  let filteredData = data.filter((item) =>
+    item[property].toLowerCase().includes(substring.trim().toLowerCase())
+  );
+  return filteredData;
+};
 
 const Home = () => {
   const location = useLocation();
   const state = location.state;
+  console.log(state);
   let search, city;
   if (state) {
     search = state?.search;
@@ -14,29 +22,51 @@ const Home = () => {
   const [noResults, setNoResults] = useState(false);
   const [restaurantsData, setRestaurantsData] = useState([]);
 
-  const handleSearch = (data, substring) => {
-    let newRestaurantsList = data.filter((item) =>
-      item.name.toLowerCase().includes(substring.trim().toLowerCase())
-    );
-    setIsLoading(false);
-    setRestaurantsData(newRestaurantsList);
-
-    if (newRestaurantsList.length === 0) {
-      setNoResults(true);
-    } else {
-      setNoResults(false);
-    }
-  };
+  const rexburgData = filterData(allData, "rexburg", "address");
+  const idahoFallsData = filterData(allData, "falls", "address");
 
   useEffect(() => {
-    if (search && search.trim() !== "") {
-      handleSearch(rexburgData, search);
-    } else {
+    const handleSearch = (data, substring, property) => {
+      let newRestaurantsList = filterData(data, substring, property);
+      setIsLoading(false);
+      setRestaurantsData(newRestaurantsList);
+
+      if (newRestaurantsList.length === 0) {
+        setNoResults(true);
+      } else {
+        setNoResults(false);
+      }
+    };
+    if (city && search.trim() === "") {
+      switch (city) {
+        case "rex":
+          setRestaurantsData(rexburgData);
+          break;
+        case "if":
+          setRestaurantsData(idahoFallsData);
+          break;
+        default:
+          setIsLoading(false);
+          setNoResults(false);
+          setRestaurantsData(allData);
+      }
+    } else if (city && search && search.trim() !== "") {
+      switch (city) {
+        case "rex":
+          handleSearch(rexburgData, search, "name");
+          break;
+        case "if":
+          handleSearch(idahoFallsData, search, "name");
+          break;
+        default:
+          handleSearch(allData, search, "name");
+      }
+    } else if (!search && !city) {
       setIsLoading(false);
       setNoResults(false);
-      setRestaurantsData(rexburgData);
+      setRestaurantsData(allData);
     }
-  }, [search]);
+  }, [search, city, rexburgData, idahoFallsData]);
 
   return (
     <>

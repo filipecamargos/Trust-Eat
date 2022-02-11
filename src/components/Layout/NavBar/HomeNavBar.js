@@ -20,14 +20,12 @@ const MainNavBar = () => {
 
   const handleSearchInput = (e) => {
     setSearchText(e.target.value);
-    navigate("/", { state: { search: e.target.value } });
+    navigate("/", { state: { city: city, search: e.target.value } });
   };
 
   const handleCityChange = (e) => {
     setCity(e.target.value);
-    setSearchText("");
-
-    navigate("/", { state: { city: e.target.value } });
+    navigate("/", { state: { city: e.target.value, search: searchText } });
   };
 
   const handleSearchSubmit = (e) => {
