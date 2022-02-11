@@ -15,16 +15,30 @@ const DUMMY_DATA = {
 };
 
 const RestaurantCard = (props) => {
+  //Set up if this is the first review
+  let componentReview = (
+      <div className={styles.ratings}>
+          <StarReviews review={DUMMY_DATA.review}/>
+          <span> First to review!</span>
+      </div>
+  );
+  
+  if (DUMMY_DATA.review > 0) {
+    componentReview  = (
+        <div className={styles.ratings}>
+            <StarReviews review={DUMMY_DATA.review}/>
+            <span> {DUMMY_DATA.numberOfReviews} reviews</span>
+        </div>
+    )
+  }
+
   return (
     <div className={styles.restaurant_card} key={DUMMY_DATA.id}>
       <div className={styles.restaurant_card_top_title}>
         <h3>{DUMMY_DATA.name}</h3>
         <h3>{DUMMY_DATA.priceTag}</h3>
       </div>
-      <StarReviews
-        review={DUMMY_DATA.review}
-        numberOfReviews={DUMMY_DATA.numberOfReviews}
-      />
+      {componentReview}
       <p className={styles.restaurant_card_single_description}>
         {DUMMY_DATA.address}
       </p>
