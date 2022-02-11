@@ -98,17 +98,25 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 			return;
 		}
 
-        const newRestaurantData = {
+		// clean up handle the types here
+		// first, split all the types by comma (split function returns a new array)
+		const typeArrayData = enteredTypeValue.split(",");
+		// next, trim off all the white space before and after each type
+		const finalTypeData = typeArrayData.map((type) => {
+			return type.trim();
+		});
+        
+		const newRestaurantData = {
 			name: enteredNameValue,
 			address: enteredAddressValue,
 			phone: enteredPhoneValue,
-			type: enteredTypeValue,
+			type: finalTypeData,
 			price_range: enteredPriceValue,
 			website: enteredWebsiteValue,
 			url: enteredImageUrlValue,
-		}
+		};
 
-        onGetNewRestaurantData(newRestaurantData);
+		onGetNewRestaurantData(newRestaurantData);
 
 		// after we process all the data from submission, clean up all the input fields
 		resetNameInput();
