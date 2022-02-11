@@ -11,7 +11,7 @@ const RestaurantCard = (props) => {
       </div>
   );
   
-  if (props.restaurante.review > 0) {
+  if (props.restaurante.rating > 0) {
     componentReview  = (
         <div className={styles.ratings}>
             <StarReviews review={props.restaurante.rating}/>
@@ -21,26 +21,26 @@ const RestaurantCard = (props) => {
   }
 
   return (
-    <Link  to={'restaurant/' + props.restaurante.id} key={props.restaurante.id} style={{ textDecoration: 'none' }}>
-    <div className={styles.restaurant_card}>
-      <div className={styles.restaurant_card_top_title}>
-        <h3>{props.restaurante.name}</h3>
-        <h3>{props.restaurante.price_range}</h3>
+    <Link className={styles.link_style} to={'restaurant/' + props.restaurante.id} key={props.restaurante.id}>
+      <div className={styles.restaurant_card}>
+        <div className={styles.restaurant_card_top_title}>
+          <h3>{props.restaurante.name}</h3>
+          <h3>{props.restaurante.price_range}</h3>
+        </div>
+        {componentReview}
+        <p className={styles.restaurant_card_single_description}>
+          {props.restaurante.address}
+        </p>
+        <p className={styles.restaurant_card_single_description}>
+          {props.restaurante.phone}
+        </p>
+        <p className={styles.restaurant_card_single_description}>
+          {props.restaurante.type.toString().replaceAll(",", ",  ")}
+        </p>
+        <p className={styles.restaurant_card_single_description}>
+          <a href={props.restaurante.website}>{props.restaurante.website}</a>
+        </p>
       </div>
-      {componentReview}
-      <p className={styles.restaurant_card_single_description}>
-        {props.restaurante.address}
-      </p>
-      <p className={styles.restaurant_card_single_description}>
-        {props.restaurante.phone}
-      </p>
-      <p className={styles.restaurant_card_single_description}>
-        {props.restaurante.type.toString().replace(",", ", ")}
-      </p>
-      <p className={styles.restaurant_card_single_description}>
-        <a href={props.restaurante.website}>{props.restaurante.website}</a>
-      </p>
-    </div>
     </Link>
   );
 };
