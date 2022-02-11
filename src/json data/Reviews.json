@@ -1,0 +1,28 @@
+{
+	"reviews": [
+		{
+			"restaurant_id": "ChIJb9xyyKwLVFMRv3Nb-tksuzk",
+			"user_name": "Yu-Chun 1",
+			"review_title": "Love this restaurant!",
+			"review_rating": "5",
+			"review_date": "2/10/2022",
+			"review_description": "The steak is super good!"
+		},
+		{
+			"restaurant_id": "ChIJb9xyyKwLVFMRv3Nb-tksuzk",
+			"user_name": "Yu-Chun 2",
+			"review_title": "It is okay",
+			"review_rating": "3",
+			"review_date": "10/25/2021",
+			"review_description": "The food is okay."
+		},
+		{
+			"restaurant_id": "ChIJb9xyyKwLVFMRv3Nb-tksuzk",
+			"user_name": "Yu-Chun 3",
+			"review_title": "Dont' go!",
+			"review_rating": "1",
+			"review_date": "1/12/2022",
+			"review_description": "The environment is terrible and food is bad."
+		}
+	]
+}
