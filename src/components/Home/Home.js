@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import allData from "../../json data/all.json";
+import RestaurantCard from "../Cards/RestaurantCard/RestaurantCard";
 
 const filterData = (data, substring, property) => {
   let filteredData = data.filter((item) =>
@@ -25,18 +26,19 @@ const Home = () => {
   const rexburgData = filterData(allData, "rexburg", "address");
   const idahoFallsData = filterData(allData, "falls", "address");
 
-  useEffect(() => {
-    const handleSearch = (data, substring, property) => {
-      let newRestaurantsList = filterData(data, substring, property);
-      setIsLoading(false);
-      setRestaurantsData(newRestaurantsList);
+  const handleSearch = useCallback((data, substring, property) => {
+    let newRestaurantsList = filterData(data, substring, property);
+    setIsLoading(false);
+    setRestaurantsData(newRestaurantsList);
 
-      if (newRestaurantsList.length === 0) {
-        setNoResults(true);
-      } else {
-        setNoResults(false);
-      }
-    };
+    if (newRestaurantsList.length === 0) {
+      setNoResults(true);
+    } else {
+      setNoResults(false);
+    }
+  }, []);
+
+  useEffect(() => {
     if (city && search.trim() === "") {
       switch (city) {
         case "rex":
@@ -66,7 +68,7 @@ const Home = () => {
       setNoResults(false);
       setRestaurantsData(allData);
     }
-  }, [search, city, rexburgData, idahoFallsData]);
+  }, [search, city, rexburgData, idahoFallsData, handleSearch]);
 
   return (
     <>
@@ -75,22 +77,21 @@ const Home = () => {
       {noResults && <p>Sorry. We found no matches.</p>}
       <ul>
         {restaurantsData.map((restaurant) => (
-          <li key={restaurant.id}>
-            <ul>
-              <li>{restaurant.name}</li>
-              <li>{restaurant.address}</li>
-              <li>{restaurant.phone}</li>
-              <li>{restaurant.price_range}</li>
-            </ul>
-          </li>
+          <RestaurantCard
+            key={restaurant.id}
+            name={restaurant.name}
+            priceTag={restaurant.price_range}
+            review={restaurant.rating}
+            numberOfReviews={5}
+            address={restaurant.address}
+            site={restaurant.website}
+            phone={restaurant.phone}
+            type={restaurant.type}
+            id={restaurant.id}
+          />
         ))}
       </ul>
     </>
   );
-import RestaurantCard from "../Cards/RestaurantCard/RestaurantCard";
-
-const Home = () => {
-  return <div><RestaurantCard /></div>;
 };
-
 export default Home;
