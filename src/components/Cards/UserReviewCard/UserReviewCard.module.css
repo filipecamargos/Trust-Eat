@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Roboto:wght@100&family=Source+Sans+Pro:wght@200&family=Zen+Antique&display=swap');
+
+.user_card {
+    width: 340px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 3px;
+    padding: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bolder;
+    color: #000;
+}
+
+.user_card .avatar {
+    font-size: 40px;
+}
+
+.user_card_head {
+    display: flex;
+}
+
+.user_card_head_right h5{
+    margin: 0px 0px -3px 15px;
+    font-weight: bolder;
+    color: #000;
+}
+
+.user_card_head_right_name{
+    font-size: 20px;
+}
+
+.user_card_head_right_title{
+    font-size: 17px;
+    margin-top: 3px !important;
+}
+
+.user_card_star_review {
+    margin-top: 12px;
+}
+
+.user_card_star_review p {
+    margin-bottom: 8px;
+}
+
+.user_card>p {
+    margin-bottom: 2px;
+}
