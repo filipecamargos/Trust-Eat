@@ -23,22 +23,7 @@ const StarReviews = (props) => {
         starReview.push(<i className="fa fa-star-o" key={starReview.length + 5}></i>) 
     }
 
-    //Set up the number of reviews
-    let componentReview = (
-        <div className="ratings">{starReview} 
-            <span> First to review!</span>
-        </div>
-    );
-    
-    if (props.review > 0) {
-        componentReview  = (
-            <div className={styles.ratings}>{starReview} 
-                <span> {props.numberOfReviews} reviews</span>
-            </div>
-        )
-    }
-
-    return <>{componentReview}</>;
+    return <>{starReview}</>;
 };
   
 export default StarReviews;
