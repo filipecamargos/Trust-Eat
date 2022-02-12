@@ -19,7 +19,7 @@ const MainNavBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchText, setSearchText] = useState(location?.state?.search || "");
-  const [city, setCity] = useState("all");
+  const [city, setCity] = useState(location?.state?.city || "all");
   const [restaurants, setRestaurants] = useState(allData);
 
   const rexburgData = filterData(allData, "rexburg", "address");
@@ -28,7 +28,7 @@ const MainNavBar = () => {
   const handleSearchInput = (e) => {
     setSearchText(e.target.value);
     navigate("/", {
-      state: { restaurants: restaurants, search: e.target.value },
+      state: { restaurants: restaurants, search: e.target.value, city: city },
     });
   };
 
@@ -38,18 +38,32 @@ const MainNavBar = () => {
       case "rex":
         setRestaurants(rexburgData);
         navigate("/", {
-          state: { restaurants: rexburgData, search: searchText },
+          state: {
+            restaurants: rexburgData,
+            search: searchText,
+            city: e.target.value,
+          },
         });
         break;
       case "if":
         setRestaurants(idahoFallsData);
         navigate("/", {
-          state: { restaurants: idahoFallsData, search: searchText },
+          state: {
+            restaurants: idahoFallsData,
+            search: searchText,
+            city: e.target.value,
+          },
         });
         break;
       default:
         setRestaurants(sortData(allData));
-        navigate("/", { state: { restaurants: allData, search: searchText } });
+        navigate("/", {
+          state: {
+            restaurants: allData,
+            search: searchText,
+            city: e.target.value,
+          },
+        });
     }
   };
 
