@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import RestaurantCard from "../Cards/RestaurantCard/RestaurantCard";
 import allData from "../../json data/all.json";
 import { sortData, filterData } from "../Layout/NavBar/utils";
+import classes from "./Home.module.css";
 
 const Home = () => {
   const location = useLocation();
@@ -43,12 +44,11 @@ const Home = () => {
   }, [search, restaurants]);
 
   return (
-    <>
-      <h1>Home</h1>
+    <div className={classes.home}>
       {isLoading && <p>Loading ...</p>}
       {noResults && <p>Sorry. We found no matches.</p>}
       {restaurantsData && (
-        <ul>
+        <ul className={classes.ul}>
           {restaurantsData.map((restaurant) => {
             return (
               <li key={restaurant.id}>
@@ -58,7 +58,7 @@ const Home = () => {
           })}
         </ul>
       )}
-    </>
+    </div>
   );
 };
 export default Home;
