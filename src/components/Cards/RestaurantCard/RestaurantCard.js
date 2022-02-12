@@ -24,7 +24,6 @@ const RestaurantCard = (props) => {
     <Link
       className={styles.link_style}
       to={"restaurant/" + props.restaurant.id}
-      key={props.restaurant.id}
     >
       <div className={styles.restaurant_card}>
         <div className={styles.restaurant_card_top_title}>
