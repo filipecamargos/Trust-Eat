@@ -38,7 +38,7 @@ const RestaurantCard = (props) => {
           {props.restaurante.type.toString().replaceAll(",", ",  ")}
         </p>
         <p className={styles.restaurant_card_single_description}>
-          <a href={props.restaurante.website}>{props.restaurante.website}</a>
+          {props.restaurante.website}
         </p>
       </div>
     </Link>
