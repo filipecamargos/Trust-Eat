@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Roboto:wght@100&family=Source+Sans+Pro:wght@200&family=Zen+Antique&display=swap');
 
 .link_style {
-    text-decoration: none;
-    color: #000;    
-    outline: none;
+    color: inherit;
+    text-decoration: inherit;
 }
 
 .restaurant_card {
@@ -36,4 +35,5 @@
 
 .ratings {
     margin-bottom: 7.5px;
+    color: #000;    
 }
