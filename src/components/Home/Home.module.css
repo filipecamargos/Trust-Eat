@@ -1,0 +1,22 @@
+.home {
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.ul {
+  display: grid;
+  padding: 0 10px;
+  row-gap: 20px;
+  column-gap: 10px;
+  list-style: none;
+}
+.ul > li {
+  min-width: 180px;
+  max-width: 500px;
+}
+
+@media only screen and (min-width: 576px) {
+  .ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}

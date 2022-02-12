@@ -1,39 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Roboto:wght@100&family=Source+Sans+Pro:wght@200&family=Zen+Antique&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fruktur&family=Roboto:wght@100&family=Source+Sans+Pro:wght@200&family=Zen+Antique&display=swap");
 
 .link_style {
-    color: inherit;
-    text-decoration: inherit;
+  color: inherit;
+  text-decoration: inherit;
 }
 
 .restaurant_card {
-    width: 340px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    border-radius: 3px;
-    padding: 10px;
-
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  padding: 10px;
+  min-height: 250px;
 }
 
-.restaurant_card_top_title>h3 {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: bolder;
-    color: #000;
+.restaurant_card_top_title > h3 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bolder;
+  color: #000;
 }
 
 .restaurant_card_top_title {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
-.restaurant_card_single_description, .restaurant_card_single_description>a {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: bolder;
-    color: #000;
-    margin-bottom: 0px;
-    margin-top: 1px;
-    font-size: 15px;
+.restaurant_card_single_description,
+.restaurant_card_single_description > a {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bolder;
+  color: #000;
+  margin-bottom: 0px;
+  margin-top: 1px;
+  overflow-wrap: break-word;
+  font-size: 15px;
 }
 
 .ratings {
-    margin-bottom: 7.5px;
-    color: #000;    
+  margin-bottom: 7.5px;
+  color: #000;
 }
