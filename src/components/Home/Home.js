@@ -76,20 +76,10 @@ const Home = () => {
       {isLoading && <p>Loading ...</p>}
       {noResults && <p>Sorry. We found no matches.</p>}
       <ul>
-        {restaurantsData.map((restaurant) => (
-          <RestaurantCard
-            key={restaurant.id}
-            name={restaurant.name}
-            priceTag={restaurant.price_range}
-            review={restaurant.rating}
-            numberOfReviews={5}
-            address={restaurant.address}
-            site={restaurant.website}
-            phone={restaurant.phone}
-            type={restaurant.type}
-            id={restaurant.id}
-          />
-        ))}
+        {restaurantsData.map((restaurant) => {
+          console.log(restaurant);
+          return <RestaurantCard key={restaurant.id} restaurant={restaurant} />;
+        })}
       </ul>
     </>
   );
