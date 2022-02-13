@@ -33,7 +33,7 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 		valueChangeHandler: cityChangedHandler,
 		inputBlurHandler: cityBlurHandler,
 		reset: resetCityInput,
-	} = useFormInput(() => {});
+	} = useFormInput((value) => value.trim() !== "");
 
 	// handle phone number field
 	const {
@@ -58,8 +58,8 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 	// handle price range field
 	const {
 		value: enteredPriceValue,
-		// isValid: enteredPriceIsValid,
-		// hasError: priceInputHasError,
+		isValid: enteredPriceIsValid,
+		hasError: priceInputHasError,
 		valueChangeHandler: priceChangedHandler,
 		inputBlurHandler: priceBlurHandler,
 		reset: resetPriceInput,
@@ -93,7 +93,9 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 		enteredNameIsValid &&
 		enteredAddressIsValid &&
 		enteredPhoneIsValid &&
-		enteredTypeIsValid
+		enteredTypeIsValid && 
+		enteredCityIsValid && 
+		enteredPriceIsValid
 	) {
 		formIsValid = true;
 	}
@@ -119,6 +121,7 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 		const newRestaurantData = {
 			name: enteredNameValue,
 			address: enteredAddressValue,
+			city: enteredCityValue,
 			phone: enteredPhoneValue,
 			type: finalTypeData,
 			price_range: enteredPriceValue,
@@ -126,11 +129,14 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 			url: enteredImageUrlValue,
 		};
 
+		console.log(enteredCityValue);
+
 		onGetNewRestaurantData(newRestaurantData);
 
 		// after we process all the data from submission, clean up all the input fields
 		resetNameInput();
 		resetAddressInput();
+		resetCityInput("Rexburg");
 		resetPhoneInput();
 		resetTypeInput();
 		resetPriceInput("$");
@@ -200,14 +206,15 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 					onChange={cityChangedHandler}
 					onBlur={cityBlurHandler}
 				>
+					<option value="" disabled>Select City</option>
 					<option>Rexburg</option>
 					<option>Idaho Falls</option>
 				</select>
-				{/* {cityInputHasError && (
+				{cityInputHasError && (
 					<p className="error-text">
 						Please select a city for this restaurant.
 					</p>
-				)} */}
+				)}
 			</div>
 			<div className={phoneClasses}>
 				<label htmlFor="phone">Phone Number*</label>
@@ -249,14 +256,15 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 					onChange={priceChangedHandler}
 					onBlur={priceBlurHandler}
 				>
+					<option value="" disabled>Select Price Range</option>
 					<option>$</option>
 					<option>$$</option>
 					<option>$$$</option>
 					<option>$$$$</option>
 				</select>
-				{/* {priceInputHasError && (
+				{priceInputHasError && (
 					<p className="error-text">Please select a price range.</p>
-				)} */}
+				)}
 			</div>
 			<div className="">
 				<label htmlFor="website">Website (Optional)</label>
