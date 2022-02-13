@@ -4,7 +4,7 @@ import RestaurantCard from "../Cards/RestaurantCard/RestaurantCard";
 const RESTAURANT_DATA = {
     "address": "615 E Iona Rd, Idaho Falls",
     "city": "Idaho Falls",
-    "id": "ChIJa0ULuUBcVFMRjhzFvzz2TcY",
+    "id": "ChIJb9xyyKwLVFMRv3Nb-tksuzk",
     "image": "http://tny.im/rdJ",
     "name": "Mitchell's Restaurant",
     "phone": "(208) 525-8834",
