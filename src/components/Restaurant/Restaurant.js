@@ -42,32 +42,41 @@ const Restaurant = () => {
   }, [fetchRestaurante, fetchReviews]);
 
   //Set the restaurant card component
-    const restauranteCard = [];
-    restauranteData.map((r, i) => {
-     restauranteCard.push(<RestaurantCard key={i} restaurante={r}/>)
-  });
+  let restauranteCard = <h1>Loading</h1>;
+  if (restauranteData.length > 0) {
+      restauranteCard = <RestaurantCard restaurant={restauranteData[0]}/>
+  } else {
+    restauranteCard = <p>Loading...</p>
+  }
 
   //Set the list of review cards
   const reviewList = [];
-  reviewData.map((r, i) => {
-     reviewList.push(<UserReviewCard
-      key={i}
-      place_id= {r.place_id}
-      user_name= {r.user_name}
-      review_title= {r.review_title}
-      review_rating= {r.review_rating}
-      review_date= {r.review_date}
-      review_description= {r.review_description}
-    />);
-  })
+  if (reviewData.length > 0) {
+    let i = 0;
+    for (let r of reviewData) {
+      reviewList.push(<UserReviewCard
+        key={i++}
+        place_id= {r.place_id}
+        user_name= {r.user_name}
+        review_title= {r.review_title}
+        review_rating= {r.review_rating}
+        review_date= {r.review_date}
+        review_description= {r.review_description}
+      />);
+    }
+  } else {
+    reviewList.push(<p>No Review!</p>)
+  }
+  
+  //TODO if somereason there is error display a sorry
 
-    //TODO if somereason there is error display a sorry
+  //TODO Display Loading Part for empty card
 
-    //TODO Display Loading Part for empty card
+  //TODO Caculate the reating for the restaurant card based on the ratings
 
-    //TODO Caculate the reating for the restaurant card based on the ratings
+  //TODO Change the Arrow functions to FOR Loops
 
-    //TODO Change the Arrow functions to FOR Loops
+  //TODO Remove the click effect from the Card on the restarurant page
 
   return(<div>
       <div>{restauranteCard}</div>
