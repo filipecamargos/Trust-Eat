@@ -33,7 +33,7 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 		valueChangeHandler: cityChangedHandler,
 		inputBlurHandler: cityBlurHandler,
 		reset: resetCityInput,
-	} = useFormInput(() => {});
+	} = useFormInput((value) => value.trim() !== "");
 
 	// handle phone number field
 	const {
@@ -58,8 +58,8 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 	// handle price range field
 	const {
 		value: enteredPriceValue,
-		// isValid: enteredPriceIsValid,
-		// hasError: priceInputHasError,
+		isValid: enteredPriceIsValid,
+		hasError: priceInputHasError,
 		valueChangeHandler: priceChangedHandler,
 		inputBlurHandler: priceBlurHandler,
 		reset: resetPriceInput,
@@ -93,7 +93,9 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 		enteredNameIsValid &&
 		enteredAddressIsValid &&
 		enteredPhoneIsValid &&
-		enteredTypeIsValid
+		enteredTypeIsValid &&
+		enteredCityIsValid &&
+		enteredPriceIsValid
 	) {
 		formIsValid = true;
 	}
@@ -108,7 +110,7 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 			return;
 		}
 
-		// clean up handle the types here
+		// clean up and handle the types here
 		// first, split all the types by comma (split function returns a new array)
 		const typeArrayData = enteredTypeValue.split(",");
 		// next, trim off all the white space before and after each type
@@ -116,9 +118,30 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 			return type.trim();
 		});
 
+		// handle the address here, we need to make sure the address includes "city" which is either Rexburg or Idaho Falls
+		// includes is case sensitive, so I need to lower all the address
+		const lowerCaseAddress = enteredAddressValue.toLowerCase();
+		let finalAddressValue;
+		// city is "Rexburg"
+		if (enteredCityValue === "Rexburg") {
+			if (!lowerCaseAddress.includes("rexburg")) {
+				finalAddressValue = enteredAddressValue.concat(", ", "Rexburg");
+			} else {
+				finalAddressValue = enteredAddressValue;
+			}
+		} else {
+		// city is "Idaho Falls"
+			if (!lowerCaseAddress.includes("idaho falls")) {
+				finalAddressValue = enteredAddressValue.concat(", ", "Idaho Falls");
+			} else {
+				finalAddressValue = enteredAddressValue;
+			}
+		}
+
 		const newRestaurantData = {
 			name: enteredNameValue,
-			address: enteredAddressValue,
+			address: finalAddressValue,
+			city: enteredCityValue,
 			phone: enteredPhoneValue,
 			type: finalTypeData,
 			price_range: enteredPriceValue,
@@ -131,6 +154,7 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 		// after we process all the data from submission, clean up all the input fields
 		resetNameInput();
 		resetAddressInput();
+		resetCityInput("Rexburg");
 		resetPhoneInput();
 		resetTypeInput();
 		resetPriceInput("$");
@@ -176,7 +200,9 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 				)}
 			</div>
 			<div className={adressClasses}>
-				<label htmlFor="address">Address*</label>
+				<label htmlFor="address">
+					Address* (Please don't include city, choose below)
+				</label>
 				<br />
 				<input
 					type="text"
@@ -200,14 +226,17 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 					onChange={cityChangedHandler}
 					onBlur={cityBlurHandler}
 				>
+					<option value="" disabled>
+						Select City
+					</option>
 					<option>Rexburg</option>
 					<option>Idaho Falls</option>
 				</select>
-				{/* {cityInputHasError && (
+				{cityInputHasError && (
 					<p className="error-text">
 						Please select a city for this restaurant.
 					</p>
-				)} */}
+				)}
 			</div>
 			<div className={phoneClasses}>
 				<label htmlFor="phone">Phone Number*</label>
@@ -249,14 +278,17 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 					onChange={priceChangedHandler}
 					onBlur={priceBlurHandler}
 				>
+					<option value="" disabled>
+						Select Price Range
+					</option>
 					<option>$</option>
 					<option>$$</option>
 					<option>$$$</option>
 					<option>$$$$</option>
 				</select>
-				{/* {priceInputHasError && (
+				{priceInputHasError && (
 					<p className="error-text">Please select a price range.</p>
-				)} */}
+				)}
 			</div>
 			<div className="">
 				<label htmlFor="website">Website (Optional)</label>
