@@ -5,18 +5,23 @@ import "./AddRestaurant.css";
 const AddRestaurant = () => {
 	// handle the new restaurant data from the user
 	const getNewRestaurantDataHandler = (newRestaurantData) => {
+		// use math.random to generate a unique id for every restaurant
+		let id = Math.random().toString(16).slice(5);
+		console.log(id);
+
 		const finalRestaurantData = {
 			...newRestaurantData,
+			id: id,
 			rating: 0,
 		};
 
-    addRestaurantHandler(finalRestaurantData);
+		addRestaurantHandler(finalRestaurantData);
 	};
 
 	// send the data to firebase to add a new restaurant to Rexburg list
 	const addRestaurantHandler = async (newRestaurantData) => {
 		const response = await fetch(
-			"https://react-restaurant-review-app-default-rtdb.firebaseio.com/Rexburg.json",
+			"https://react-restaurant-review-app-default-rtdb.firebaseio.com/restaurants.json",
 			{
 				method: "POST",
 				body: JSON.stringify(newRestaurantData),
@@ -27,7 +32,7 @@ const AddRestaurant = () => {
 		);
 
 		const data = await response.json();
-		console.log(data);
+		// console.log(data);
 	};
 
 	return (
