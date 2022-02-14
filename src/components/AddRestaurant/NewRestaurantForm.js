@@ -93,8 +93,8 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 		enteredNameIsValid &&
 		enteredAddressIsValid &&
 		enteredPhoneIsValid &&
-		enteredTypeIsValid && 
-		enteredCityIsValid && 
+		enteredTypeIsValid &&
+		enteredCityIsValid &&
 		enteredPriceIsValid
 	) {
 		formIsValid = true;
@@ -110,7 +110,7 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 			return;
 		}
 
-		// clean up handle the types here
+		// clean up and handle the types here
 		// first, split all the types by comma (split function returns a new array)
 		const typeArrayData = enteredTypeValue.split(",");
 		// next, trim off all the white space before and after each type
@@ -118,9 +118,29 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 			return type.trim();
 		});
 
+		// handle the address here, we need to make sure the address includes "city" which is either Rexburg or Idaho Falls
+		// includes is case sensitive, so I need to lower all the address
+		const lowerCaseAddress = enteredAddressValue.toLowerCase();
+		let finalAddressValue;
+		// city is "Rexburg"
+		if (enteredCityValue === "Rexburg") {
+			if (!lowerCaseAddress.includes("rexburg")) {
+				finalAddressValue = enteredAddressValue.concat(", ", "Rexburg");
+			} else {
+				finalAddressValue = enteredAddressValue;
+			}
+		} else {
+		// city is "Idaho Falls"
+			if (!lowerCaseAddress.includes("idaho falls")) {
+				finalAddressValue = enteredAddressValue.concat(", ", "Idaho Falls");
+			} else {
+				finalAddressValue = enteredAddressValue;
+			}
+		}
+
 		const newRestaurantData = {
 			name: enteredNameValue,
-			address: enteredAddressValue,
+			address: finalAddressValue,
 			city: enteredCityValue,
 			phone: enteredPhoneValue,
 			type: finalTypeData,
@@ -128,8 +148,6 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 			website: enteredWebsiteValue,
 			url: enteredImageUrlValue,
 		};
-
-		console.log(enteredCityValue);
 
 		onGetNewRestaurantData(newRestaurantData);
 
@@ -182,7 +200,9 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 				)}
 			</div>
 			<div className={adressClasses}>
-				<label htmlFor="address">Address*</label>
+				<label htmlFor="address">
+					Address* (Please don't include city, choose below)
+				</label>
 				<br />
 				<input
 					type="text"
@@ -206,7 +226,9 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 					onChange={cityChangedHandler}
 					onBlur={cityBlurHandler}
 				>
-					<option value="" disabled>Select City</option>
+					<option value="" disabled>
+						Select City
+					</option>
 					<option>Rexburg</option>
 					<option>Idaho Falls</option>
 				</select>
@@ -256,7 +278,9 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
 					onChange={priceChangedHandler}
 					onBlur={priceBlurHandler}
 				>
-					<option value="" disabled>Select Price Range</option>
+					<option value="" disabled>
+						Select Price Range
+					</option>
 					<option>$</option>
 					<option>$$</option>
 					<option>$$$</option>
