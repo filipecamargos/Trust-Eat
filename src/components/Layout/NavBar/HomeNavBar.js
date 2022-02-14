@@ -11,19 +11,39 @@ import { LinkContainer } from "react-router-bootstrap";
 import classes from "./HomeNavBar.module.css";
 import logo from "../../../images/logo192.png";
 import { useNavigate, useLocation } from "react-router-dom";
-import allData from "../../../json data/all.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { filterData, sortData } from "./utils";
+import baseUrl from "../../../FirebaseConfigFile";
+import useHttp from "../../../hooks/use-Http";
 
 const MainNavBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [allData, setAllData] = useState([]);
+  const restaurantsUrl = `${baseUrl}/restaurants.json`;
+  const { error: error1, sendRequest: getRestaurants } = useHttp();
+  // Data that is sent through navigate is below
   const [searchText, setSearchText] = useState(location?.state?.search || "");
   const [city, setCity] = useState(location?.state?.city || "all");
-  const [restaurants, setRestaurants] = useState(allData);
+  const [restaurants, setRestaurants] = useState([]);
 
-  const rexburgData = filterData(allData, "rexburg", "address");
-  const idahoFallsData = filterData(allData, "falls", "address");
+  useEffect(() => {
+    const formatData = (restaurantsObj) => {
+      console.log(restaurantsObj);
+      const restaurantsArray = Object.values(restaurantsObj).map(
+        (value) => value
+      );
+      setAllData(restaurantsArray);
+    };
+
+    getRestaurants({ url: restaurantsUrl }, formatData);
+  }, [getRestaurants, restaurantsUrl]);
+
+  location.state = location?.state || { error: error1 };
+  location.state.error = location.state.error || error1;
+
+  const rexburgData = filterData(allData, "rexburg", "city");
+  const idahoFallsData = filterData(allData, "falls", "city");
 
   const handleSearchInput = (e) => {
     setSearchText(e.target.value);
