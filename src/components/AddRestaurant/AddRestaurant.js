@@ -7,12 +7,13 @@ const AddRestaurant = () => {
 	const getNewRestaurantDataHandler = (newRestaurantData) => {
 		// use math.random to generate a unique id for every restaurant
 		let id = Math.random().toString(16).slice(5);
-		console.log(id);
 
+		// each restaurant will have default rating and num_of_reviews which are both 0
 		const finalRestaurantData = {
 			...newRestaurantData,
 			id: id,
 			rating: 0,
+			num_of_reviews: 0,
 		};
 
 		addRestaurantHandler(finalRestaurantData);
@@ -32,7 +33,7 @@ const AddRestaurant = () => {
 		);
 
 		const data = await response.json();
-		// console.log(data);
+		console.log(data);
 	};
 
 	return (
