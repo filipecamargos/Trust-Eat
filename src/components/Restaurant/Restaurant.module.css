@@ -3,6 +3,16 @@
     margin: 20px auto;
 }
 
+.restaurant_card_top_card_and_image {
+    display: flex;
+    justify-content: space-between;
+}
+
+.restaurant_card_top_card_and_image>img{
+    width: 450px;
+    border-radius: 15px;
+}
+
 .restaurant_card_wrapper>a {
     pointer-events: none; 
 }
@@ -22,3 +32,24 @@
 .btn {
     margin-bottom: 24px;
 }
+
+@media (max-width: 810px) {
+    .restaurant_card_top_card_and_image {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .restaurant_reviews {
+        display: block
+    }
+
+    .restaurant_card_top_card_and_image>img{
+        width: 340px;
+        border-radius: 20px;
+
+    }
+
+    .restaurant {
+        padding: 5px;
+    }
+  }
