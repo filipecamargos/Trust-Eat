@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
+import styles from "./Restaurant.module.css";
 import UserReviewCard from "../Cards/UserReviewCard/UserReviewCard"
 import RestaurantCard from "../Cards/RestaurantCard/RestaurantCard";
 const FIREBASE_ULR = "https://react-restaurant-review-app-default-rtdb.firebaseio.com/";
@@ -34,6 +35,7 @@ const Restaurant = () => {
       setReviewData(loadData)
   }, []);
 
+  //Apply user effect for both above fetches
   useEffect(() => {
     fetchRestaurante();
     fetchReviews();
@@ -48,9 +50,28 @@ const Restaurant = () => {
   }
 
   //Set the restaurant card component
-  let restauranteCard = <h1>Loading</h1>;
+  let restauranteCard = <h1>Loading...</h1>;
+
+  //Call to review
+  let btnReviewContent = (
+    <div>
+      <button type="button" className={"btn btn-info " + styles.btn}>
+        <i className="fa-solid fa-plus"></i> Add a review
+      </button>
+    </div>
+  );
+
   if (restauranteData.length > 0) {
       restauranteCard = <RestaurantCard restaurant={restauranteData[0]} key={restauranteData.id}/>
+    if (restauranteData[0].rating < 1) {
+      btnReviewContent = (
+        <div>
+            <button type="button" className={"btn btn-link " + styles.btn}>
+              <i className="fa-solid fa-plus"></i> Be the first to review
+            </button>
+        </div>
+      );
+    } 
   } else {
     restauranteCard = <p key='restaurantLoading'>Loading...</p>
   }
@@ -70,22 +91,23 @@ const Restaurant = () => {
         review_description= {r.review_description}
       />);
     }
-  } else {
-    reviewList.push(<p key="reviewCase">No reviews available!</p>)
   }
-
-  //TODO Remove the click effect from the Card on the restarurant page
 
   //Style the page
 
-  return(<div>
-      <div>{restauranteCard}</div>
-      <br></br>
-      <br></br>
-      <div>{reviewList}</div>
+  //Add the image
+
+  return(
+    <div className={styles.restaurant}>
+      <div className={styles.restaurant_card_wrapper}>
+        {restauranteCard}
+      </div>
+      {btnReviewContent}
+      <div className={styles.restaurant_reviews}>
+          {reviewList}
+      </div>
     </div>
   );
-  
 };
 
 export default Restaurant;

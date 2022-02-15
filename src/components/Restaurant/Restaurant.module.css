@@ -1,0 +1,24 @@
+.restaurant {
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.restaurant_card_wrapper>a {
+    pointer-events: none; 
+}
+
+.restaurant_card_wrapper>a>div {
+    width: 340px;
+    box-shadow: none !important;
+}
+
+.restaurant_reviews {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 25px;
+    column-gap: 25px;
+}
+
+.btn {
+    margin-bottom: 24px;
+}

@@ -4,21 +4,12 @@ import { Link } from "react-router-dom";
 
 const RestaurantCard = (props) => {
   //Set up if this is the first review
-  let componentReview = (
+  const componentReview = (
     <div className={styles.ratings}>
       <StarReviews review={props.restaurant.rating} />
-      <span> First to review!</span>
+      <span> {props.restaurant.num_of_reviews} reviews</span>
     </div>
   );
-
-  if (props.restaurant.rating > 0) {
-    componentReview = (
-      <div className={styles.ratings}>
-        <StarReviews review={props.restaurant.rating} />
-        <span> {props.restaurant.num_of_reviews} reviews</span>
-      </div>
-    );
-  }
 
   return (
     <Link
