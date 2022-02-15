@@ -66,6 +66,10 @@
     display: inline-block;
   }
 
+  .select {
+    width: 90px !important;
+  }
+
   .search {
     padding: 0 10%;
   }
