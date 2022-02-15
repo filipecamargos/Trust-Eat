@@ -1,5 +1,26 @@
+.hidden {
+  display: none;
+}
+
+.container {
+  justify-content: start !important;
+}
+
+.brand {
+  margin-right: 0 !important;
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  display: flex !important;
+  margin-left: 1% !important;
+  flex: 2;
+}
+
 .button-inside {
   position: relative;
+  width: 100%;
 }
 
 .filter-button {
@@ -20,12 +41,32 @@
   display: none;
 }
 
-.hidden {
-  display: none;
+.select {
+  width: 40px !important;
+  height: 38px !important;
+  margin: 0 !important;
+}
+
+.collapse {
+  flex-grow: 0 !important;
 }
 
 @media only screen and (min-width: 576px) {
+  .select {
+    width: 80px !important;
+  }
+
+  .container {
+    justify-content: space-between !important;
+  }
+}
+
+@media only screen and (min-width: 780px) {
   .hidden {
     display: inline-block;
+  }
+
+  .search {
+    padding: 0 10%;
   }
 }

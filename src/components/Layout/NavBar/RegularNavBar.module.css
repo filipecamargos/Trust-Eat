@@ -2,6 +2,10 @@
   display: none;
 }
 
+.collapse {
+  flex-grow: 0 !important;
+}
+
 @media only screen and (min-width: 576px) {
   .hidden {
     display: inline-block;
