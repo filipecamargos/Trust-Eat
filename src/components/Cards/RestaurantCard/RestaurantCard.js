@@ -15,7 +15,7 @@ const RestaurantCard = (props) => {
     componentReview = (
       <div className={styles.ratings}>
         <StarReviews review={props.restaurant.rating} />
-        <span> {props.restaurant.numberOfReviews} reviews</span>
+        <span> {props.restaurant.num_of_reviews} reviews</span>
       </div>
     );
   }

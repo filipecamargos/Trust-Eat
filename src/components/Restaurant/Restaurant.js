@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState, useCallback } from "react";
+import { Link } from "react-router-dom";
 import UserReviewCard from "../Cards/UserReviewCard/UserReviewCard"
 import RestaurantCard from "../Cards/RestaurantCard/RestaurantCard";
 const FIREBASE_ULR = "https://react-restaurant-review-app-default-rtdb.firebaseio.com/";
@@ -27,9 +28,6 @@ const Restaurant = () => {
   const getReviews = `${FIREBASE_ULR}reviews.json?orderBy="restaurant_id"&equalTo="${restaurante_id}"`
   const fetchReviews = useCallback(async () => {
       const response = await fetch(getReviews);
-      if (!response.ok) {
-        console.log("no Data");
-      }
       const data = await response.json();
       let loadData = [];
       for (const key in data) {loadData.push(data[key])}
@@ -41,12 +39,20 @@ const Restaurant = () => {
     fetchReviews();
   }, [fetchRestaurante, fetchReviews]);
 
+  //Handle error in case data is not fetched from db
+  if (fetchError) {
+    return <>
+    <h1>Sorry there was an error loading the information please go to the main page</h1>
+    <Link to={"/"}>Home</Link>
+  </>
+  }
+
   //Set the restaurant card component
   let restauranteCard = <h1>Loading</h1>;
   if (restauranteData.length > 0) {
-      restauranteCard = <RestaurantCard restaurant={restauranteData[0]}/>
+      restauranteCard = <RestaurantCard restaurant={restauranteData[0]} key={restauranteData.id}/>
   } else {
-    restauranteCard = <p>Loading...</p>
+    restauranteCard = <p key='restaurantLoading'>Loading...</p>
   }
 
   //Set the list of review cards
@@ -65,18 +71,12 @@ const Restaurant = () => {
       />);
     }
   } else {
-    reviewList.push(<p>No Review!</p>)
+    reviewList.push(<p key="reviewCase">No reviews available!</p>)
   }
-  
-  //TODO if somereason there is error display a sorry
-
-  //TODO Display Loading Part for empty card
-
-  //TODO Caculate the reating for the restaurant card based on the ratings
-
-  //TODO Change the Arrow functions to FOR Loops
 
   //TODO Remove the click effect from the Card on the restarurant page
+
+  //Style the page
 
   return(<div>
       <div>{restauranteCard}</div>
