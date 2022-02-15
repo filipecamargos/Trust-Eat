@@ -62,7 +62,18 @@ const Restaurant = () => {
   );
 
   if (restauranteData.length > 0) {
-      restauranteCard = <RestaurantCard restaurant={restauranteData[0]} key={restauranteData.id}/>
+      //Set up the up part of the restaurant top
+      console.log(restauranteData[0].image)
+      restauranteCard = (
+        <div className={styles.restaurant_card_top_card_and_image}>
+          <div className={styles.restaurant_card_wrapper}>
+            <RestaurantCard restaurant={restauranteData[0]} key={restauranteData.id}/>
+          </div>
+          <img src={restauranteData[0].image} alt="Restaurant"/>
+        </div>
+      );
+    
+    //Dynamically set the btn the person is the first to review
     if (restauranteData[0].rating < 1) {
       btnReviewContent = (
         <div>
@@ -99,9 +110,7 @@ const Restaurant = () => {
 
   return(
     <div className={styles.restaurant}>
-      <div className={styles.restaurant_card_wrapper}>
-        {restauranteCard}
-      </div>
+      {restauranteCard}
       {btnReviewContent}
       <div className={styles.restaurant_reviews}>
           {reviewList}
