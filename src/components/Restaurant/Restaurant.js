@@ -103,10 +103,6 @@ const Restaurant = () => {
     }
   }
 
-  //Style the page
-
-  //Add the image
-
   return(
     <div className={styles.restaurant}>
       {restauranteCard}
