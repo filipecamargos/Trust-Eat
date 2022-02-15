@@ -63,7 +63,6 @@ const Restaurant = () => {
 
   if (restauranteData.length > 0) {
       //Set up the up part of the restaurant top
-      console.log(restauranteData[0].image)
       restauranteCard = (
         <div className={styles.restaurant_card_top_card_and_image}>
           <div className={styles.restaurant_card_wrapper}>
