@@ -11,10 +11,11 @@ const Home = () => {
   const state = location.state;
   const restaurantsUrl = `${baseUrl}/restaurants.json`;
   console.log(state);
-  let search, restaurants, error1;
+  let search, restaurants, city, error1;
   if (state) {
     search = state?.search;
     restaurants = state?.restaurants;
+    city = state?.city;
     error1 = state?.error;
   }
   const [noResults, setNoResults] = useState(false);
@@ -46,15 +47,21 @@ const Home = () => {
       }
     };
 
-    if (restaurants && search && search.trim() !== "") {
-      handleSearch(restaurants, search, "name");
-    } else if (restaurants) {
-      setRestaurantsData(restaurants);
-      setNoResults(false);
-    } else {
-      setNoResults(false);
+    if (restaurants && restaurants.length !== 0) {
+      if (search.trim() !== "") {
+        handleSearch(restaurants, search, "name");
+      } else {
+        setRestaurantsData(restaurants);
+        setNoResults(false);
+      }
+    } else if (restaurants && restaurants.length === 0 && city === "all") {
+      if (search?.trim() !== "") {
+        handleSearch(initialRestaurantsData, search, "name");
+      } else {
+        setNoResults(false);
+      }
     }
-  }, [search, restaurants]);
+  }, [search, restaurants, city, initialRestaurantsData]);
 
   const restaurantsList = !restaurantsData ? (
     <ul className={classes.ul}>

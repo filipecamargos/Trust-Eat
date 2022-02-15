@@ -39,7 +39,10 @@ const MainNavBar = () => {
     getRestaurants({ url: restaurantsUrl }, formatData);
   }, [getRestaurants, restaurantsUrl]);
 
-  location.state = location?.state || { error: error1 };
+  location.state = location?.state || {
+    error: error1,
+    city: "all",
+  };
   location.state.error = location.state.error || error1;
 
   const rexburgData = filterData(allData, "rexburg", "city");
