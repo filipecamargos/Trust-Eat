@@ -3,9 +3,7 @@ import React from "react";
 import useFormInput from "../../hooks/useFormInput";
 import "./NewReviewForm.css";
 
-export const NewReviewForm = ({ restaurant_id }) => {
-	const restaurantId = restaurant_id;
-
+export const NewReviewForm = () => {
 	// handle user name field
 	const {
 		value: enteredNameValue,
@@ -62,6 +60,7 @@ export const NewReviewForm = ({ restaurant_id }) => {
 	return (
 		<form>
 			<div className="">
+				<i className="fa-solid fa-user"></i>
 				<label htmlFor="name">User Name*</label>
 				<br />
 				<input
@@ -76,15 +75,23 @@ export const NewReviewForm = ({ restaurant_id }) => {
 				)}
 			</div>
 			<div className="">
-				<label htmlFor="rating">Address*</label>
+				<label htmlFor="rating">Rating</label>
 				<br />
-				<input
-					type="text"
+                <select
 					id="rating"
 					value={enteredRatingValue}
 					onChange={ratingChangedHandler}
 					onBlur={ratingBlurHandler}
-				/>
+				>
+					<option value="" disabled>
+						Select Rating
+					</option>
+					<option>5</option>
+					<option>4</option>
+					<option>3</option>
+					<option>2</option>
+                    <option>1</option>
+				</select>
 				{ratingInputHasError && (
 					<p className="error-text">
 						Please select rating for this restaurant.
@@ -94,18 +101,14 @@ export const NewReviewForm = ({ restaurant_id }) => {
 			<div className="">
 				<label htmlFor="title">Review Title*</label>
 				<br />
-				{/* <select
+				<input
+					type="text"
 					id="title"
+					maxLength="45"
 					value={enteredTitleValue}
 					onChange={titleChangedHandler}
 					onBlur={titleBlurHandler}
-				>
-					<option value="" disabled>
-						Select City
-					</option>
-					<option>Rexburg</option>
-					<option>Idaho Falls</option>
-				</select> */}
+				/>
 				{titleInputHasError && (
 					<p className="error-text">Please enter a review title.</p>
 				)}
@@ -113,8 +116,8 @@ export const NewReviewForm = ({ restaurant_id }) => {
 			<div className="">
 				<label htmlFor="description">Review Description*</label>
 				<br />
-				<input
-					type="text"
+				<textarea
+					rows="3"
 					id="description"
 					value={enteredDescriptionValue}
 					onChange={descriptionChangedHandler}

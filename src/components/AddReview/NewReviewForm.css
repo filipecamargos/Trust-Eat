@@ -1,0 +1,7 @@
+#description {
+    width: 100%;
+}
+
+input[type="text"] {
+    height: 40px;
+}

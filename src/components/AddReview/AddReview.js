@@ -5,14 +5,14 @@ import NewReviewForm from "./NewReviewForm";
 const AddReview = (props) => {
 
     // when the users click on a restaurant, we will receive the id of the restaurant
-    // fake id for now
-    const restaurant_id = 100;
+    const restaurant_id = props.restaurantId;
+    console.log(restaurant_id);
 
 	return (
 		<div className="container">
-            <h1>Write a New Review!</h1>
-			<div>Restaurant Name</div>
-			<NewReviewForm restaurantId={restaurant_id}></NewReviewForm>
+			<h1 className="header">Write New Review for {props.restaurantName}</h1>
+			<NewReviewForm></NewReviewForm>
+            <button className="submit-modal-button">Submit</button>
             <button onClick={props.onCloseModal} className="cancel-modal-button">Cancel</button>
 		</div>
 	);

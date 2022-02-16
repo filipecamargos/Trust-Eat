@@ -139,10 +139,12 @@ const Restaurant = () => {
 		}
 	}
 
+  // console.log(`restaurant name: ${restauranteData[0].name}`);
+
 	return (
 		<div>
 			{openReviewModal && (
-				<ReviewModal onCloseModal={closeReviewModalHandler}></ReviewModal>
+				<ReviewModal onCloseModal={closeReviewModalHandler} restaurantName={restauranteData[0].name} restaurantId={restauranteData[0].id}></ReviewModal>
 			)}
 			<div className={styles.restaurant}>
 				{restauranteCard}
