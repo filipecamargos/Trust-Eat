@@ -1,0 +1,48 @@
+#description {
+	width: 100%;
+}
+
+input[type="text"] {
+	height: 40px;
+}
+
+.submit-modal-button:disabled {
+	border: 1px solid #999999;
+	background-color: #cccccc;
+	color: #666666;
+}
+
+.error-text {
+	color: #b40e0e;
+}
+
+.invalid input {
+	border: 1px solid #b40e0e;
+	background-color: #fddddd;
+}
+
+.invalid input:focus {
+	border-color: #ff8800;
+	background-color: #fbe8d2;
+}
+
+.cancel-modal-button {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: rgb(240, 1, 1);
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+}
+
+.submit-modal-button {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	background-color: rgb(4, 99, 4);
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+}
