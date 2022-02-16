@@ -87,9 +87,6 @@ export const NewReviewForm = ({ onSubmitReview, onCloseModal }) => {
 
 		onSubmitReview(newReviewData);
 
-		// close the modal after we submit the review successfully
-		onCloseModal();
-
 		// after we process all the data from submission, clean up all the input fields
 		resetNameInput();
 		resetRatingInput("");

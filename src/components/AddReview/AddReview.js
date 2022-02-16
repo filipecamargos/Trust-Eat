@@ -73,6 +73,9 @@ const AddReview = (props) => {
 							"Updated num_of_reviews and rating in restaurant successfully!"
 						);
 						console.log(result);
+                        // I actually want to close the modal here instead of after submitting the review because I want the users
+                        // to see the newly created review after the modal is closed, and I tighted the useEffect with the state of my modal in Restaurant.js
+                        props.onCloseModal();
 					})
 					.catch((err) => console.log(err));
 			}
