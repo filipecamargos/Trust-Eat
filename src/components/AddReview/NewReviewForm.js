@@ -78,8 +78,8 @@ export const NewReviewForm = ({ onSubmitReview, onCloseModal }) => {
 
 		const newReviewData = {
 			user_name: enteredNameValue,
-            // I need to convert rating from string to num because I will need to use it to calculate new rating in AddReview.js
-			review_rating: +enteredRatingValue, 
+			// I need to convert rating from string to num because I will need to use it to calculate new rating in AddReview.js
+			review_rating: +enteredRatingValue,
 			review_title: enteredTitleValue,
 			review_description: enteredDescriptionValue,
 			review_date: reviewDate,
@@ -95,18 +95,16 @@ export const NewReviewForm = ({ onSubmitReview, onCloseModal }) => {
 	};
 
 	// set up dynamics class to display error message
-	const nameClasses = nameInputHasError ? "form-control invalid" : "";
+	const nameClasses = nameInputHasError ? "invalid" : "";
 
-	const ratingClasses = ratingInputHasError ? "form-control invalid" : "";
+	const ratingClasses = ratingInputHasError ? "invalid" : "";
 
-	const titleClasses = titleInputHasError ? "form-control invalid" : "";
+	const titleClasses = titleInputHasError ? "invalid" : "";
 
-	const descriptionClasses = descriptionInputHasError
-		? "form-control invalid"
-		: "";
+	const descriptionClasses = descriptionInputHasError ? "invalid" : "";
 
 	return (
-		<form onSubmit={submitHandler}>
+		<form onSubmit={submitHandler} className="reviewForm">
 			<div className={nameClasses}>
 				<i className="fa-solid fa-user"></i>
 				<label htmlFor="name">User Name*</label>
@@ -177,7 +175,9 @@ export const NewReviewForm = ({ onSubmitReview, onCloseModal }) => {
 				)}
 			</div>
 			<div>
-				<button className="submit-modal-button" disabled={!formIsValid}>Submit</button>
+				<button className="submit-modal-button" disabled={!formIsValid}>
+					Submit
+				</button>
 				<button onClick={onCloseModal} className="cancel-modal-button">
 					Cancel
 				</button>

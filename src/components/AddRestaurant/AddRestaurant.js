@@ -76,7 +76,7 @@ const AddRestaurant = () => {
   return (
     <div>
       <div>
-        <h2 className={classes["main-message"]}>Add A New Restaurant Here!</h2>
+        <h2 className={classes["main-message"]}>Time to Add New Restaurant!</h2>
       </div>
       <NewRestaurantForm
         onGetNewRestaurantData={getNewRestaurantDataHandler}
