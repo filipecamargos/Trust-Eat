@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Roboto:wght@100&family=Source+Sans+Pro:wght@200&family=Zen+Antique&display=swap');
 
 .user_card {
-    width: 340px;
+    width: 100%;
+    min-height: auto;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 3px;
-    padding: 10px;
+    padding: 20px;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: bolder;
     color: #000;

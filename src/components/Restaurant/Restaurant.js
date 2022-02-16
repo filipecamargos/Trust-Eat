@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState, useCallback } from "react";
+import { Link } from "react-router-dom";
+import styles from "./Restaurant.module.css";
 import UserReviewCard from "../Cards/UserReviewCard/UserReviewCard"
 import RestaurantCard from "../Cards/RestaurantCard/RestaurantCard";
 const FIREBASE_ULR = "https://react-restaurant-review-app-default-rtdb.firebaseio.com/";
@@ -27,26 +29,61 @@ const Restaurant = () => {
   const getReviews = `${FIREBASE_ULR}reviews.json?orderBy="restaurant_id"&equalTo="${restaurante_id}"`
   const fetchReviews = useCallback(async () => {
       const response = await fetch(getReviews);
-      if (!response.ok) {
-        console.log("no Data");
-      }
       const data = await response.json();
       let loadData = [];
       for (const key in data) {loadData.push(data[key])}
       setReviewData(loadData)
   }, []);
 
+  //Apply user effect for both above fetches
   useEffect(() => {
     fetchRestaurante();
     fetchReviews();
   }, [fetchRestaurante, fetchReviews]);
 
+  //Handle error in case data is not fetched from db
+  if (fetchError) {
+    return <>
+    <h1>Sorry there was an error loading the information please go to the main page</h1>
+    <Link to={"/"}>Home</Link>
+  </>
+  }
+
   //Set the restaurant card component
-  let restauranteCard = <h1>Loading</h1>;
+  let restauranteCard = <h1>Loading...</h1>;
+
+  //Call to review
+  let btnReviewContent = (
+    <div>
+      <button type="button" className={"btn btn-info " + styles.btn}>
+        <i className="fa-solid fa-plus"></i> Add a review
+      </button>
+    </div>
+  );
+
   if (restauranteData.length > 0) {
-      restauranteCard = <RestaurantCard restaurant={restauranteData[0]}/>
+      //Set up the up part of the restaurant top
+      restauranteCard = (
+        <div className={styles.restaurant_card_top_card_and_image}>
+          <div className={styles.restaurant_card_wrapper}>
+            <RestaurantCard restaurant={restauranteData[0]} key={restauranteData.id}/>
+          </div>
+          <img src={restauranteData[0].image} alt="Restaurant"/>
+        </div>
+      );
+    
+    //Dynamically set the btn the person is the first to review
+    if (restauranteData[0].rating < 1) {
+      btnReviewContent = (
+        <div>
+            <button type="button" className={"btn btn-link " + styles.btn}>
+              <i className="fa-solid fa-plus"></i> Be the first to review
+            </button>
+        </div>
+      );
+    } 
   } else {
-    restauranteCard = <p>Loading...</p>
+    restauranteCard = <p key='restaurantLoading'>Loading...</p>
   }
 
   //Set the list of review cards
@@ -64,28 +101,17 @@ const Restaurant = () => {
         review_description= {r.review_description}
       />);
     }
-  } else {
-    reviewList.push(<p>No Review!</p>)
   }
-  
-  //TODO if somereason there is error display a sorry
 
-  //TODO Display Loading Part for empty card
-
-  //TODO Caculate the reating for the restaurant card based on the ratings
-
-  //TODO Change the Arrow functions to FOR Loops
-
-  //TODO Remove the click effect from the Card on the restarurant page
-
-  return(<div>
-      <div>{restauranteCard}</div>
-      <br></br>
-      <br></br>
-      <div>{reviewList}</div>
+  return(
+    <div className={styles.restaurant}>
+      {restauranteCard}
+      {btnReviewContent}
+      <div className={styles.restaurant_reviews}>
+          {reviewList}
+      </div>
     </div>
   );
-  
 };
 
 export default Restaurant;
