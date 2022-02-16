@@ -45,15 +45,3 @@
     min-height: 220px;
   }
 }
-
-@media only screen and (min-width: 900px) {
-  .restaurant_card {
-    min-height: 290px;
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  .restaurant_card {
-    min-height: 220px;
-  }
-}
