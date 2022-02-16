@@ -37,10 +37,12 @@
   color: white !important;
   background-color: #a28b2d !important;
   border-color: #a28b2d !important;
+  font-weight: bolder !important;
 }
 
 .btn-link {
   color: #a28b2d !important;
+  font-weight: bolder !important;
 }
 
 @media (max-width: 810px) {

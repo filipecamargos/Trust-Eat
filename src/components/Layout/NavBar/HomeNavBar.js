@@ -127,7 +127,7 @@ const MainNavBar = () => {
                 aria-label="Search"
                 value={searchText}
                 onChange={handleSearchInput}
-                style={{ marginBottom: 0 }}
+                style={{ marginBottom: 0, fontWeight: "bolder" }}
               />
               {/* <DropdownButton
               id="dropdown-basic-button"
