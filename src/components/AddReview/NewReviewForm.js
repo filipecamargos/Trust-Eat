@@ -3,7 +3,7 @@ import React from "react";
 import useFormInput from "../../hooks/useFormInput";
 import "./NewReviewForm.css";
 
-export const NewReviewForm = () => {
+export const NewReviewForm = ({ onSubmitReview, onCloseModal }) => {
 	// handle user name field
 	const {
 		value: enteredNameValue,
@@ -57,25 +57,58 @@ export const NewReviewForm = () => {
 		formIsValid = true;
 	}
 
+	// this function will be trigerred when the users click the submit button
+	const submitHandler = (event) => {
+		// prevent default behavior of the browser
+		event.preventDefault();
+
+		// if any field is missing or doesn't meet the requirement, we don't keep going to process the data
+		if (!formIsValid) {
+			return;
+		}
+
+		// get the current date
+		const today = new Date();
+		// to put 0 before the day if there is only one number, up to 2 digits
+		const day = String(today.getDate()).padStart(2, "0");
+		// January is 0, so we need to add 1
+		const month = String(today.getMonth() + 1).padStart(2, "0");
+		const year = today.getFullYear();
+		const reviewDate = month + "/" + day + "/" + year;
+
+		const newReviewData = {
+			user_name: enteredNameValue,
+			review_rating: enteredRatingValue,
+			review_title: enteredTitleValue,
+			review_description: enteredDescriptionValue,
+			review_date: reviewDate,
+		};
+
+		onSubmitReview(newReviewData);
+
+		// close the modal after we submit the review successfully
+		onCloseModal();
+
+		// after we process all the data from submission, clean up all the input fields
+		resetNameInput();
+		resetRatingInput("");
+		resetTitleInput();
+		resetDescriptionInput();
+	};
+
 	// set up dynamics class to display error message
-	const nameClasses = nameInputHasError
-		? "form-control invalid"
-		: "";
+	const nameClasses = nameInputHasError ? "form-control invalid" : "";
 
-	const ratingClasses = ratingInputHasError
-		? "form-control invalid"
-		: "";
+	const ratingClasses = ratingInputHasError ? "form-control invalid" : "";
 
-	const titleClasses = titleInputHasError
-		? "form-control invalid"
-		: "";
+	const titleClasses = titleInputHasError ? "form-control invalid" : "";
 
 	const descriptionClasses = descriptionInputHasError
 		? "form-control invalid"
 		: "";
 
 	return (
-		<form>
+		<form onSubmit={submitHandler}>
 			<div className={nameClasses}>
 				<i className="fa-solid fa-user"></i>
 				<label htmlFor="name">User Name*</label>
@@ -144,6 +177,12 @@ export const NewReviewForm = () => {
 				{descriptionInputHasError && (
 					<p className="error-text">Please enter a review description.</p>
 				)}
+			</div>
+			<div>
+				<button className="submit-modal-button" disabled={!formIsValid}>Submit</button>
+				<button onClick={onCloseModal} className="cancel-modal-button">
+					Cancel
+				</button>
 			</div>
 		</form>
 	);
