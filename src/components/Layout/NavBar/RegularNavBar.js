@@ -8,7 +8,7 @@ const MainNavBar = () => {
     <Navbar expand="sm" bg="dark" variant="dark">
       <Container fluid>
         <LinkContainer to="/">
-          <Navbar.Brand style={{ display: "flex", alignItems: "center" }}>
+          <Navbar.Brand className={classes.brand}>
             <img
               alt=""
               src={logo}
@@ -30,7 +30,7 @@ const MainNavBar = () => {
           className={classes.collapse}
         >
           <LinkContainer to="/">
-            <Nav.Link className={classes.hidden}>Home</Nav.Link>
+            <Nav.Link>Home</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/addrestaurant">
             <Nav.Link>Add Restaurant</Nav.Link>
