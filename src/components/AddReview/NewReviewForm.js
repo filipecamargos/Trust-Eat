@@ -57,15 +57,33 @@ export const NewReviewForm = () => {
 		formIsValid = true;
 	}
 
+	// set up dynamics class to display error message
+	const nameClasses = nameInputHasError
+		? "form-control invalid"
+		: "";
+
+	const ratingClasses = ratingInputHasError
+		? "form-control invalid"
+		: "";
+
+	const titleClasses = titleInputHasError
+		? "form-control invalid"
+		: "";
+
+	const descriptionClasses = descriptionInputHasError
+		? "form-control invalid"
+		: "";
+
 	return (
 		<form>
-			<div className="">
+			<div className={nameClasses}>
 				<i className="fa-solid fa-user"></i>
 				<label htmlFor="name">User Name*</label>
 				<br />
 				<input
 					type="text"
 					id="name"
+					maxLength="45"
 					value={enteredNameValue}
 					onChange={nameChangedHandler}
 					onBlur={nameBlurHandler}
@@ -74,10 +92,10 @@ export const NewReviewForm = () => {
 					<p className="error-text">Please enter a user name.</p>
 				)}
 			</div>
-			<div className="">
+			<div className={ratingClasses}>
 				<label htmlFor="rating">Rating</label>
 				<br />
-                <select
+				<select
 					id="rating"
 					value={enteredRatingValue}
 					onChange={ratingChangedHandler}
@@ -90,7 +108,7 @@ export const NewReviewForm = () => {
 					<option>4</option>
 					<option>3</option>
 					<option>2</option>
-                    <option>1</option>
+					<option>1</option>
 				</select>
 				{ratingInputHasError && (
 					<p className="error-text">
@@ -98,7 +116,7 @@ export const NewReviewForm = () => {
 					</p>
 				)}
 			</div>
-			<div className="">
+			<div className={titleClasses}>
 				<label htmlFor="title">Review Title*</label>
 				<br />
 				<input
@@ -113,7 +131,7 @@ export const NewReviewForm = () => {
 					<p className="error-text">Please enter a review title.</p>
 				)}
 			</div>
-			<div className="">
+			<div className={descriptionClasses}>
 				<label htmlFor="description">Review Description*</label>
 				<br />
 				<textarea
