@@ -4,12 +4,12 @@ import {
   Container,
   Form,
   FormControl,
-  DropdownButton,
-  Dropdown,
+  // DropdownButton,
+  // Dropdown,
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import classes from "./HomeNavBar.module.css";
-import logo from "../../../images/logo192.png";
+import logo from "../../../images/review-app-logo.png";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { filterData, sortData } from "./utils";
@@ -92,50 +92,56 @@ const MainNavBar = () => {
 
   return (
     <Navbar expand="sm" bg="dark" variant="dark">
-      <Container fluid>
-        <LinkContainer to="/">
-          <Navbar.Brand>
-            <img
-              alt=""
-              src={logo}
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />{" "}
-            <span className={classes.hidden}>Cool App Name</span>
-          </Navbar.Brand>
-        </LinkContainer>
-        <Form.Select
-          value={city}
-          size="sm"
-          onChange={handleCityChange}
-          style={{ width: 80, height: 38 }}
-        >
-          <option value="all">All</option>
-          <option value="rex">Rexburg</option>
-          <option value="if">Idaho Falls</option>
-        </Form.Select>
-        <div className={classes["button-inside"]}>
-          <FormControl
-            type="search"
-            placeholder="Search"
-            className="me-2"
-            aria-label="Search"
-            value={searchText}
-            onChange={handleSearchInput}
-            style={{ marginBottom: 0 }}
-          />
-          <DropdownButton
-            id="dropdown-basic-button"
-            className={classes["filter-button"]}
-            align="end"
-            title={
-              <i className="fas fa-sliders-h" style={{ fontSize: 20 }}></i>
-            }
-          >
-            <Dropdown.Item as="button">Review (high to low)</Dropdown.Item>
-            <Dropdown.Item as="button">Price (low to high)</Dropdown.Item>
-          </DropdownButton>
+      <Container fluid className={classes.container}>
+        <div style={{ display: "flex", flex: 2, alignItems: "center" }}>
+          <LinkContainer to="/">
+            <Navbar.Brand className={classes.brand}>
+              <img
+                alt=""
+                src={logo}
+                width="40"
+                height="40"
+                className="d-inline-block align-top"
+              />
+              <span className={classes.hidden} style={{ marginLeft: "10px" }}>
+                BYU-I Trust Eat
+              </span>
+            </Navbar.Brand>
+          </LinkContainer>
+          <div className={classes.search}>
+            <Form.Select
+              value={city}
+              size="sm"
+              onChange={handleCityChange}
+              className={classes.select}
+            >
+              <option value="all">All</option>
+              <option value="rex">Rexburg</option>
+              <option value="if">Idaho Falls</option>
+            </Form.Select>
+            <div className={classes["button-inside"]}>
+              <FormControl
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+                value={searchText}
+                onChange={handleSearchInput}
+                style={{ marginBottom: 0, fontWeight: "bolder" }}
+              />
+              {/* <DropdownButton
+              id="dropdown-basic-button"
+              className={classes["filter-button"]}
+              align="end"
+              title={
+                <i className="fas fa-sliders-h" style={{ fontSize: 20 }}></i>
+              }
+            >
+              <Dropdown.Item as="button">Review (high to low)</Dropdown.Item>
+              <Dropdown.Item as="button">Price (low to high)</Dropdown.Item>
+            </DropdownButton> */}
+            </div>
+          </div>
         </div>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
@@ -143,7 +149,10 @@ const MainNavBar = () => {
         >
           <i className="fa fa-angle-down" style={{ fontSize: 24 }}></i>
         </Navbar.Toggle>
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          className={classes.collapse}
+        >
           <LinkContainer to="/">
             <Nav.Link className={classes.hidden}>Home</Nav.Link>
           </LinkContainer>

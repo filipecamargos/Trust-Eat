@@ -1,5 +1,5 @@
 .home {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 20px auto;
 }
 
@@ -12,11 +12,21 @@
 }
 .ul > li {
   min-width: 180px;
-  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width: 576px) {
   .ul {
     grid-template-columns: 1fr 1fr;
+    padding: 0 5%;
+    column-gap: 5%;
+    row-gap: 30px;
+  }
+}
+
+@media only screen and (min-width: 860px) {
+  .ul > li {
+    width: 80%;
   }
 }

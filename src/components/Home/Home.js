@@ -55,7 +55,7 @@ const Home = () => {
         setNoResults(false);
       }
     } else if (restaurants && restaurants.length === 0 && city === "all") {
-      if (search?.trim() !== "") {
+      if (search.trim() !== "") {
         handleSearch(initialRestaurantsData, search, "name");
       } else {
         setNoResults(false);
@@ -89,7 +89,7 @@ const Home = () => {
     <div className={classes.home}>
       {(error1 || error2) && <p>We're sorry. Something went wrong!</p>}
       {isLoading && <p>Loading ...</p>}
-      {noResults && <p>Sorry. We found no matches.</p>}
+      {!isLoading && noResults && <p>Sorry. We found no matches.</p>}
       {!(error1 || error2) && restaurantsList}
     </div>
   );

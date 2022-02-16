@@ -2,6 +2,24 @@
   display: none;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.collapse {
+  flex-grow: 0 !important;
+}
+
+.collapse > a {
+  color: white !important;
+}
+
+.collapse > a:hover,
+.collapse > a:active {
+  color: wheat !important;
+}
+
 @media only screen and (min-width: 576px) {
   .hidden {
     display: inline-block;

@@ -7,10 +7,10 @@
 
 .restaurant_card {
   width: 100%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgb(162 144 84);
   border-radius: 3px;
   padding: 10px;
-  min-height: 250px;
+  /* min-height: 250px; */
 }
 
 .restaurant_card_top_title > h3 {
@@ -38,4 +38,10 @@
 .ratings {
   margin-bottom: 7.5px;
   color: #000;
+}
+
+@media only screen and (min-width: 576px) {
+  .restaurant_card {
+    min-height: 220px;
+  }
 }

@@ -1,55 +1,106 @@
 .restaurant {
-    max-width: 1200px;
-    margin: 20px auto;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 5px;
 }
 
 .restaurant_card_top_card_and_image {
-    display: flex;
-    justify-content: space-between;
+  display: grid;
+  margin-bottom: 20px;
 }
 
-.restaurant_card_top_card_and_image>img{
-    width: 450px;
-    border-radius: 15px;
+.restaurant_card_top_card_and_image > img {
+  width: 95%;
+  max-width: 450px;
+  margin: 0 auto;
+  border-radius: 20px;
 }
 
-.restaurant_card_wrapper>a {
-    pointer-events: none; 
+.restaurant_card_wrapper > a {
+  pointer-events: none;
 }
 
-.restaurant_card_wrapper>a>div {
-    width: 340px;
-    box-shadow: none !important;
+.restaurant_card_wrapper > a > div {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  box-shadow: none !important;
+  min-height: 198px;
 }
 
 .restaurant_reviews {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 25px;
-    column-gap: 25px;
+  display: grid;
+  row-gap: 30px;
+  margin-top: 20px;
 }
 
 .btn {
-    margin-bottom: 24px;
+  margin-bottom: 7px;
 }
 
-@media (max-width: 810px) {
-    .restaurant_card_top_card_and_image {
-        display: block;
-        margin-bottom: 20px;
-    }
+.btn-info {
+  color: white !important;
+  background-color: #a28b2d !important;
+  border-color: #a28b2d !important;
+  font-weight: bolder !important;
+}
 
-    .restaurant_reviews {
-        display: block
-    }
+.btn-link {
+  color: #a28b2d !important;
+  font-weight: bolder !important;
+}
 
-    .restaurant_card_top_card_and_image>img{
-        width: 340px;
-        border-radius: 20px;
+.restaurant-button1,
+.restaurant-button2 {
+  display: flex !important;
+  justify-content: start !important;
+}
 
-    }
+.restaurant-button1 {
+  margin-left: 3px;
+}
 
-    .restaurant {
-        padding: 5px;
-    }
+@media only screen and (min-width: 510px) {
+  .restaurant-button1 {
+    margin-left: 6%;
   }
+}
+
+@media only screen and (min-width: 550px) {
+  .restaurant-button1 {
+    margin-left: 8%;
+  }
+
+  .restaurant-button2 {
+    margin-left: 10%;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .restaurant_card_top_card_and_image {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 15px;
+  }
+
+  .restaurant_reviews {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10%;
+    padding: 0 15px;
+  }
+
+  .restaurant_card_top_card_and_image > img {
+    border-radius: 15px;
+    margin-right: 0;
+  }
+
+  .restaurant_card_wrapper > a > div {
+    margin-left: 0;
+    padding: 10px 0;
+  }
+
+  .restaurant-button1,
+  .restaurant-button2 {
+    justify-content: start !important;
+    margin-left: 10px;
+  }
+}
