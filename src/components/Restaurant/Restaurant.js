@@ -48,7 +48,7 @@ const Restaurant = () => {
 	useEffect(() => {
 		fetchRestaurante();
 		fetchReviews();
-	}, [fetchRestaurante, fetchReviews]);
+	}, [fetchRestaurante, fetchReviews, openReviewModal]);
 
 	//Handle error in case data is not fetched from db
 	if (fetchError) {
@@ -67,7 +67,7 @@ const Restaurant = () => {
 	const openReviewModalHandler = () => {
 		setOpenReviewModal(true);
 	};
-  // close the review modal
+	// close the review modal
 	const closeReviewModalHandler = () => {
 		setOpenReviewModal(false);
 	};
@@ -139,12 +139,17 @@ const Restaurant = () => {
 		}
 	}
 
-  // console.log(`restaurant name: ${restauranteData[0].name}`);
-
 	return (
 		<div>
 			{openReviewModal && (
-				<ReviewModal onCloseModal={closeReviewModalHandler} restaurantName={restauranteData[0].name} restaurantId={restauranteData[0].id}></ReviewModal>
+				<ReviewModal
+					onCloseModal={closeReviewModalHandler}
+					restaurantName={restauranteData[0].name}
+					restaurantId={restauranteData[0].id}
+					restaurantDocId={restauranteData[0].doc_id}
+					restaurantNumOfReviews={restauranteData[0].num_of_reviews}
+					restaurantRating={restauranteData[0].rating}
+				></ReviewModal>
 			)}
 			<div className={styles.restaurant}>
 				{restauranteCard}

@@ -9,7 +9,14 @@ const ReviewModal = (props) => {
 		<div>
 			<div className="backdrop" onClick={props.onCloseModal}></div>
 			<div className="myModal">
-				<AddReview onCloseModal={props.onCloseModal} restaurantName={props.restaurantName} restaurantId={props.restaurantId}></AddReview>
+				<AddReview
+					onCloseModal={props.onCloseModal}
+					restaurantName={props.restaurantName}
+					restaurantId={props.restaurantId}
+					restaurantDocId={props.restaurantDocId}
+                    restaurantNumOfReviews={props.restaurantNumOfReviews}
+                    restaurantRating={props.restaurantRating}
+				></AddReview>
 			</div>
 		</div>
 	);

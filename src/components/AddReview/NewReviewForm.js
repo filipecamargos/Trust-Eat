@@ -78,7 +78,8 @@ export const NewReviewForm = ({ onSubmitReview, onCloseModal }) => {
 
 		const newReviewData = {
 			user_name: enteredNameValue,
-			review_rating: enteredRatingValue,
+            // I need to convert rating from string to num because I will need to use it to calculate new rating in AddReview.js
+			review_rating: +enteredRatingValue, 
 			review_title: enteredTitleValue,
 			review_description: enteredDescriptionValue,
 			review_date: reviewDate,

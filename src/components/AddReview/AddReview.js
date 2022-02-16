@@ -3,8 +3,13 @@ import "./AddReview.css";
 import NewReviewForm from "./NewReviewForm";
 
 const AddReview = (props) => {
-	// when the users click on a restaurant, we will receive the id of the restaurant
+	// when the users click on a restaurant, we will receive all the info of the restaurant
+	// we pass these here because we will need them to write new review and update restaurant info below
 	const restaurant_id = props.restaurantId;
+	const restaurantDocId = props.restaurantDocId;
+	const restaurantNumOfReviews = props.restaurantNumOfReviews;
+	const restaurantRating = props.restaurantRating;
+	console.log({ ...props });
 
 	const submitReviewHandler = (newReviewData) => {
 		const reviewData = {
@@ -36,13 +41,46 @@ const AddReview = (props) => {
 				);
 			} else {
 				// if the response is okay, then we want to proceed to update the num_of_reviews and rating for the restaurant
-				// data is a JavaScript object
-				const data = await response.json();
-				console.log(data.name);
+
+				const newNumOfReviews = restaurantNumOfReviews + 1;
+				let newRating =
+					(restaurantRating * restaurantNumOfReviews +
+						newReviewData.review_rating) /
+					newNumOfReviews;
+				// I need to make sure the rating only has one decimal place
+				newRating = Math.round(newRating * 10) / 10;
+
 				fetch(
-					"https://react-restaurant-review-app-default-rtdb.firebaseio.com/restaurants.json"
-				);
+					"https://react-restaurant-review-app-default-rtdb.firebaseio.com/restaurants/" +
+						restaurantDocId +
+						".json",
+					{
+						method: "PATCH",
+						body: JSON.stringify({
+							num_of_reviews: newNumOfReviews,
+							rating: newRating,
+						}),
+						headers: {
+							"Content-type": "application/json; charset=UTF-8",
+						},
+					}
+				)
+					.then((response) => {
+						return response.json();
+					})
+					.then((result) => {
+						console.log(
+							"Updated num_of_reviews and rating in restaurant successfully!"
+						);
+						console.log(result);
+					})
+					.catch((err) => console.log(err));
 			}
+
+			// data is a JavaScript object
+			const data = await response.json();
+			console.log("Wrote a new review successfully!");
+			console.log(data);
 		} catch (err) {
 			console.log(err);
 		}
