@@ -64,7 +64,7 @@ const Restaurant = () => {
 
   //Call to review
   let btnReviewContent = (
-    <div>
+    <div className={styles["restaurant-button1"]}>
       <button
         type="button"
         className={`btn ${styles.btn} ${styles["btn-info"]}`}
@@ -91,7 +91,7 @@ const Restaurant = () => {
     //Dynamically set the btn the person is the first to review
     if (restauranteData[0].rating < 1) {
       btnReviewContent = (
-        <div>
+        <div className={styles["restaurant-button2"]}>
           <button
             type="button"
             className={`btn ${styles.btn} ${styles["btn-link"]}`}

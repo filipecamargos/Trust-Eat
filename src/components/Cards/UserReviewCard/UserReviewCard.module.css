@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Fruktur&family=Roboto:wght@100&family=Source+Sans+Pro:wght@200&family=Zen+Antique&display=swap");
 
 .user_card {
-  width: 100%;
+  width: 95%;
+  max-width: 450px;
   min-height: auto;
+  margin: 0 auto;
   box-shadow: 0 4px 8px 0 rgb(162 144 84);
   border-radius: 3px;
   padding: 20px;
@@ -44,4 +46,11 @@
 
 .user_card > p {
   margin-bottom: 2px;
+}
+
+@media only screen and (min-width: 700px) {
+  .user_card {
+    width: 100%;
+    max-width: 600px;
+  }
 }
