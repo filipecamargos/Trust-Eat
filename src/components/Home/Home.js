@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import RestaurantCard from "../Cards/RestaurantCard/RestaurantCard";
-import { sortData, filterData } from "../Layout/NavBar/utils";
+import { DropdownButton, Dropdown } from "react-bootstrap";
+import {
+  sortData,
+  filterData,
+  sortByPrice,
+  sortByRating,
+} from "../Layout/NavBar/utils";
 import baseUrl from "../../FirebaseConfigFile";
 import useHttp from "../../hooks/use-Http";
 import classes from "./Home.module.css";
@@ -10,7 +16,6 @@ const Home = () => {
   const location = useLocation();
   const state = location.state;
   const restaurantsUrl = `${baseUrl}/restaurants.json`;
-  console.log(state);
   let search, restaurants, city, error1;
   if (state) {
     search = state?.search;
@@ -25,7 +30,6 @@ const Home = () => {
 
   useEffect(() => {
     const formatData = (restaurantsObj) => {
-      console.log(restaurantsObj);
       const restaurantsArray = Object.values(restaurantsObj).map(
         (value) => value
       );
@@ -63,6 +67,22 @@ const Home = () => {
     }
   }, [search, restaurants, city, initialRestaurantsData]);
 
+  const reviewFilterHandler = () => {
+    if (restaurants) {
+      setRestaurantsData((prevRestaurant) => sortByRating(prevRestaurant));
+    } else {
+      setRestaurantsData(sortByRating(initialRestaurantsData));
+    }
+  };
+
+  const priceFilterHandler = () => {
+    if (restaurants) {
+      setRestaurantsData((prevRestaurant) => sortByPrice(prevRestaurant));
+    } else {
+      setRestaurantsData(sortByPrice(initialRestaurantsData));
+    }
+  };
+
   const restaurantsList = !restaurantsData ? (
     <ul className={classes.ul}>
       {initialRestaurantsData.map((restaurant) => {
@@ -87,6 +107,16 @@ const Home = () => {
 
   return (
     <div className={classes.home}>
+      {!isLoading && !noResults && (
+        <DropdownButton id={`dropdown-button-drop-down`} title="Sort By">
+          <Dropdown.Item as="button" onClick={reviewFilterHandler}>
+            Review (high to low)
+          </Dropdown.Item>
+          <Dropdown.Item as="button" onClick={priceFilterHandler}>
+            Price (low to high)
+          </Dropdown.Item>
+        </DropdownButton>
+      )}
       {(error1 || error2) && <p>We're sorry. Something went wrong!</p>}
       {isLoading && <p>Loading ...</p>}
       {!isLoading && noResults && <p>Sorry. We found no matches.</p>}

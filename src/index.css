@@ -20,3 +20,34 @@ h2 {
   color: #a28b2d;
   font-weight: bolder !important;
 }
+
+.dropdown {
+  display: flex !important;
+  justify-content: end !important;
+  margin-right: 2%;
+}
+
+.btn-primary {
+  color: white !important;
+  background-color: #a28b2d !important;
+  font-weight: bolder !important;
+  border-color: #a28b2d !important;
+  margin-bottom: 15px !important;
+  font-size: 18px !important;
+}
+
+.dropdown-menu {
+  font-weight: bolder !important;
+}
+
+@media only screen and (min-width: 576px) {
+  .dropdown {
+    margin-right: 5%;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .dropdown {
+    margin-right: 0;
+  }
+}

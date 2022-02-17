@@ -279,13 +279,14 @@ const NewRestaurantForm = ({ onGetNewRestaurantData }) => {
         )}
       </div>
       <div>
-        <label htmlFor="price_range">Price Range</label>
+        <label htmlFor="price_range">Price Range*</label>
         <br />
         <select
           id="price_range"
           value={enteredPriceValue}
           onChange={priceChangedHandler}
           onBlur={priceBlurHandler}
+          required
         >
           <option value="" disabled>
             Select Price Range
