@@ -1,12 +1,4 @@
-import {
-  Navbar,
-  Nav,
-  Container,
-  Form,
-  FormControl,
-  // DropdownButton,
-  // Dropdown,
-} from "react-bootstrap";
+import { Navbar, Nav, Container, Form, FormControl } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import classes from "./HomeNavBar.module.css";
 import logo from "../../../images/review-app-logo.png";
@@ -129,17 +121,6 @@ const MainNavBar = () => {
                 onChange={handleSearchInput}
                 style={{ marginBottom: 0, fontWeight: "bolder" }}
               />
-              {/* <DropdownButton
-              id="dropdown-basic-button"
-              className={classes["filter-button"]}
-              align="end"
-              title={
-                <i className="fas fa-sliders-h" style={{ fontSize: 20 }}></i>
-              }
-            >
-              <Dropdown.Item as="button">Review (high to low)</Dropdown.Item>
-              <Dropdown.Item as="button">Price (low to high)</Dropdown.Item>
-            </DropdownButton> */}
             </div>
           </div>
         </div>
