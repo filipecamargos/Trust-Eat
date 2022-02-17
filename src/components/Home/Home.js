@@ -16,7 +16,6 @@ const Home = () => {
   const location = useLocation();
   const state = location.state;
   const restaurantsUrl = `${baseUrl}/restaurants.json`;
-  console.log(state);
   let search, restaurants, city, error1;
   if (state) {
     search = state?.search;
@@ -31,7 +30,6 @@ const Home = () => {
 
   useEffect(() => {
     const formatData = (restaurantsObj) => {
-      console.log(restaurantsObj);
       const restaurantsArray = Object.values(restaurantsObj).map(
         (value) => value
       );
