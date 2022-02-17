@@ -90,7 +90,7 @@ const AddReview = (props) => {
   };
 
   return (
-    <div className={classes.container}>
+    <div className={`container ${classes.container}`}>
       <h1 className={classes.header}>
         Write New Review for {props.restaurantName}
       </h1>
