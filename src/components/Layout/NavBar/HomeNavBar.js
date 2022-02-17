@@ -21,7 +21,6 @@ const MainNavBar = () => {
 
   useEffect(() => {
     const formatData = (restaurantsObj) => {
-      console.log(restaurantsObj);
       const restaurantsArray = Object.values(restaurantsObj).map(
         (value) => value
       );
