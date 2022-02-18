@@ -11,6 +11,12 @@ const RestaurantCard = (props) => {
     </div>
   );
 
+  //Check for the website
+  let website = '';
+  if (props.restaurant.website) {
+    website = props.restaurant.website;
+  }
+
   return (
     <Link
       className={styles.link_style}
@@ -32,7 +38,7 @@ const RestaurantCard = (props) => {
           {props.restaurant.type.toString().replaceAll(",", ",  ")}
         </p>
         <p className={styles.restaurant_card_single_description}>
-          {props.restaurant.website}
+          {website}
         </p>
       </div>
     </Link>
