@@ -89,6 +89,11 @@ const Restaurant = () => {
   );
 
   if (restauranteData.length > 0) {
+    //Check if there is an image
+    let restaurantImage = '/static/media/review-app-logo.68eec4e638187a794e04.png'
+    if (restauranteData[0].image) {
+      restaurantImage = restauranteData[0].image
+    }
     //Set up the up part of the restaurant top
     restauranteCard = (
       <div className={styles.restaurant_card_top_card_and_image}>
@@ -98,7 +103,7 @@ const Restaurant = () => {
             key={restauranteData.id}
           />
         </div>
-        <img src={restauranteData[0].image} alt="Restaurant" />
+        <img src={restaurantImage} alt="Restaurant" />
       </div>
     );
 
