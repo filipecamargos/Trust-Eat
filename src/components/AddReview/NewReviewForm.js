@@ -122,7 +122,7 @@ export const NewReviewForm = ({ onSubmitReview, onCloseModal }) => {
         )}
       </div>
       <div className={ratingClasses}>
-        <label htmlFor="rating">Rating</label>
+        <label htmlFor="rating">Rating*</label>
         <br />
         <select
           id="rating"
