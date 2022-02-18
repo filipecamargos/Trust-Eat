@@ -110,7 +110,7 @@ const Home = () => {
       {!isLoading && !noResults && (
         <DropdownButton id={`dropdown-button-drop-down`} title="Sort By">
           <Dropdown.Item as="button" onClick={reviewFilterHandler}>
-            Review (high to low)
+            Rating (high to low)
           </Dropdown.Item>
           <Dropdown.Item as="button" onClick={priceFilterHandler}>
             Price (low to high)

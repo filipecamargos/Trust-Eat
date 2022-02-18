@@ -36,12 +36,12 @@
 }
 
 .error-text {
-  color: #a28b2d;
+  color: #b40e0e;
 }
 
 .invalid input {
   border: 1px solid #b40e0e;
-  background-color: #a28b2d30;
+  background-color: #fddddd;
 }
 
 .invalid input:focus {
