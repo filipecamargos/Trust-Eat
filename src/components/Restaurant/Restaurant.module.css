@@ -16,16 +16,15 @@
   border-radius: 20px;
 }
 
-.restaurant_card_wrapper > a {
-  pointer-events: none;
-}
-
-.restaurant_card_wrapper > a > div {
+.restaurant_card_wrapper > div {
   width: 100%;
   max-width: 450px;
-  margin: 0 auto;
   box-shadow: none !important;
   min-height: 198px;
+}
+
+.restaurant_card_wrapper a {
+  color: rgb(0, 0, 255);
 }
 
 .restaurant_reviews {
@@ -79,7 +78,6 @@
 @media only screen and (min-width: 700px) {
   .restaurant_card_top_card_and_image {
     grid-template-columns: 1fr 1fr;
-    padding: 0 15px;
   }
 
   .restaurant_reviews {

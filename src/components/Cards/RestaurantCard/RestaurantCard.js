@@ -1,6 +1,5 @@
 import styles from "./RestaurantCard.module.css";
 import StarReviews from "../StarReviews/StarReviews";
-import { Link } from "react-router-dom";
 
 const RestaurantCard = (props) => {
   //Set up if this is the first review
@@ -18,10 +17,7 @@ const RestaurantCard = (props) => {
   }
 
   return (
-    <Link
-      className={styles.link_style}
-      to={"restaurant/" + props.restaurant.id}
-    >
+
       <div className={styles.restaurant_card}>
         <div className={styles.restaurant_card_top_title}>
           <h3>{props.restaurant.name}</h3>
@@ -38,10 +34,9 @@ const RestaurantCard = (props) => {
           {props.restaurant.type.toString().replaceAll(",", ",  ")}
         </p>
         <p className={styles.restaurant_card_single_description}>
-          {website}
+          <a href={website} target="_blank">{website}</a>
         </p>
       </div>
-    </Link>
   );
 };
 

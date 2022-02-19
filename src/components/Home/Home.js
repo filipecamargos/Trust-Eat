@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import RestaurantCard from "../Cards/RestaurantCard/RestaurantCard";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import {
@@ -88,7 +88,12 @@ const Home = () => {
       {initialRestaurantsData.map((restaurant) => {
         return (
           <li key={restaurant.id}>
-            <RestaurantCard restaurant={restaurant} />
+            <Link
+              className={classes.link_style}
+              to={"restaurant/" + restaurant.id}
+            >
+              <RestaurantCard restaurant={restaurant} />
+            </Link>
           </li>
         );
       })}
@@ -98,7 +103,12 @@ const Home = () => {
       {restaurantsData.map((restaurant) => {
         return (
           <li key={restaurant.id}>
-            <RestaurantCard restaurant={restaurant} />
+            <Link
+              className={classes.link_style}
+              to={"restaurant/" + restaurant.id}
+            >
+              <RestaurantCard restaurant={restaurant} />
+            </Link>
           </li>
         );
       })}
