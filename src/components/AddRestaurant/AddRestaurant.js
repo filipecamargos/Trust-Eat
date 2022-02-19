@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import NewRestaurantForm from "./NewRestaurantForm";
 import classes from "./AddRestaurant.module.css";
+import { Navigate } from "react-router-dom";
 
 const AddRestaurant = () => {
+	const [addedRestaurantSuccessfully, setAddedRestaurantSuccessfully] = useState(false);
+	// if the restaurant was added successfully, redirect back to Home page
+	if (addedRestaurantSuccessfully) {
+		return <Navigate to="/"></Navigate>;
+	}
+
   // handle the new restaurant data from the user
   const getNewRestaurantDataHandler = (newRestaurantData) => {
     // use math.random to generate a unique id for every restaurant
@@ -67,6 +74,8 @@ const AddRestaurant = () => {
 					.then((result) => {
 						// console.log("Added doc_id into restaurant successfully!");
 						// console.log(result);
+
+						setAddedRestaurantSuccessfully(true);
 					})
 					.catch((err) => console.log(err));
 			}
