@@ -28,5 +28,7 @@ This is an application designed for 15,000+ BYU-Idaho students to use. They can 
 # Future Work
 
 * Create User Authentication
+* Allow Users to Edit Their Own Reviews
+* Allow Only Users with Accounts to Add New Restaurants & Write New Reviews
 * Show Notifications When Restaurants or Reviews Being Added
 * Allow Users to Add Restaurants In Different Cities
