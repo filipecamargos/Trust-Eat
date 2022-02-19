@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import NewRestaurantForm from "./NewRestaurantForm";
 import classes from "./AddRestaurant.module.css";
+import { Navigate } from "react-router-dom";
 
 const AddRestaurant = () => {
+	const [addedRestaurantSuccessfully, setAddedRestaurantSuccessfully] = useState(false);
+	// if the restaurant was added successfully, redirect back to Home page
+	if (addedRestaurantSuccessfully) {
+		return <Navigate to="/"></Navigate>;
+	}
+
   // handle the new restaurant data from the user
   const getNewRestaurantDataHandler = (newRestaurantData) => {
     // use math.random to generate a unique id for every restaurant
@@ -39,6 +46,8 @@ const AddRestaurant = () => {
 					"Something went wrong. Please contact the food app team at test@gmail.com"
 				);
 			} else {
+				console.log("Added a new restaurant successfully!");
+
 				// come into the else block means that the new restaurant got saved into the database successfully,
 				// so the new document name (key) will be returned by Firebase and I want to add that into a new column "doc_id"
 				// because I will need that when I create a new review (see AddReview.js for more details)
@@ -63,8 +72,10 @@ const AddRestaurant = () => {
 						return response.json();
 					})
 					.then((result) => {
-						console.log("Added doc_id into restaurant successfully!");
-						console.log(result);
+						// console.log("Added doc_id into restaurant successfully!");
+						// console.log(result);
+
+						setAddedRestaurantSuccessfully(true);
 					})
 					.catch((err) => console.log(err));
 			}

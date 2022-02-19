@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.532a8ba2.css",
+    "main.js": "/static/js/main.89791258.js",
+    "static/media/review-app-logo.png": "/static/media/review-app-logo.68eec4e638187a794e04.png",
+    "index.html": "/index.html",
+    "main.532a8ba2.css.map": "/static/css/main.532a8ba2.css.map",
+    "main.89791258.js.map": "/static/js/main.89791258.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.532a8ba2.css",
+    "static/js/main.89791258.js"
+  ]
+}
