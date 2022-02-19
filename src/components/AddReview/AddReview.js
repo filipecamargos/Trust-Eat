@@ -9,7 +9,7 @@ const AddReview = (props) => {
   const restaurantDocId = props.restaurantDocId;
   const restaurantNumOfReviews = props.restaurantNumOfReviews;
   const restaurantRating = props.restaurantRating;
-  console.log({ ...props });
+  // console.log({ ...props });
 
   const submitReviewHandler = (newReviewData) => {
     const reviewData = {
@@ -69,10 +69,11 @@ const AddReview = (props) => {
             return response.json();
           })
           .then((result) => {
-            console.log(
-              "Updated num_of_reviews and rating in restaurant successfully!"
-            );
-            console.log(result);
+            // console.log(
+            //   "Updated num_of_reviews and rating in restaurant successfully!"
+            // );
+            // console.log(result);
+
             // I actually want to close the modal here instead of after submitting the review because I want the users
             // to see the newly created review after the modal is closed, and I tighted the useEffect with the state of my modal in Restaurant.js
             props.onCloseModal();
@@ -83,7 +84,7 @@ const AddReview = (props) => {
       // data is a JavaScript object
       const data = await response.json();
       console.log("Wrote a new review successfully!");
-      console.log(data);
+      // console.log(data);
     } catch (err) {
       console.log(err);
     }

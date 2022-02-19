@@ -39,6 +39,8 @@ const AddRestaurant = () => {
 					"Something went wrong. Please contact the food app team at test@gmail.com"
 				);
 			} else {
+				console.log("Added a new restaurant successfully!");
+
 				// come into the else block means that the new restaurant got saved into the database successfully,
 				// so the new document name (key) will be returned by Firebase and I want to add that into a new column "doc_id"
 				// because I will need that when I create a new review (see AddReview.js for more details)
@@ -63,8 +65,8 @@ const AddRestaurant = () => {
 						return response.json();
 					})
 					.then((result) => {
-						console.log("Added doc_id into restaurant successfully!");
-						console.log(result);
+						// console.log("Added doc_id into restaurant successfully!");
+						// console.log(result);
 					})
 					.catch((err) => console.log(err));
 			}
